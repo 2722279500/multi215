@@ -1,0 +1,16 @@
+  <!-- 菜单列表 -->
+  <view class="menus-list menus">
+    <form wx:for="{{ dataList }}" wx:key="*this" bindsubmit="onTargetPage" data-path="{{item.linkUrl}}" report-submit="true">
+      <button formType="submit" class="btn-normal">
+        <view class="menus-item dis-flex b-f">
+          <view class="menus-item__left flex-box dis-flex flex-y-center">
+            <image wx:if="{{item.imgUrl}}" mode="aspectFit" src="{{item.imgUrl}}"></image>
+            <text class="menus-item__name f-30">{{ item.text }}</text>
+          </view>
+          <view class="menus-item__right flex-box dis-flex flex-x-end flex-y-center">
+            <text class="iconfont icon-xiangyoujiantou f-26 col-7"></text>
+          </view>
+        </view>
+      </button>
+    </form>
+  </view>

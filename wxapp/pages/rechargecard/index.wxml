@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="box">
+  <view class="title">会员卡绑定</view>
+  <view class="top">
+    <view class="input-wrap">
+      <input name="uname" class="user" placeholder="卡号" bindinput="bindUnameInput"></input>
+      <input name="passwd" class="password" placeholder="密码" bindinput="bindPasswdInput"></input>
+    </view>
+    <view class="scan-code">
+      <image src="../../images/saoma.png" bindtap="scan_code"></image>
+      <view class="scan-code-text">扫一扫</view>
+    </view>
+  </view>
+  <view class="demo-image">
+    <image src="{{setting.logo}}" mode="aspectFill"></image>
+  </view>
+  <view class="cue-text">{{setting.remark}}</view>
+  <view class="btn-bind" bindtap="receive">立即绑定</view>
+  <view class="explain">
+    <view class="explain-text">
+      一一一 会员卡绑定说明 一一一
+    </view>
+    <view class="explain-item">
+		<text>{{setting.describe}}</text>
+    </view>
+  </view>
+</view>

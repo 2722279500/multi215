@@ -1,0 +1,8 @@
+<!-- 单例导航 -->
+<view class="nav-to" style="background: {{ itemStyle.background }};margin: {{ itemStyle.marginTop + 'px' + ' ' + itemStyle.marginLeft + 'px' }};" catchtap="navigationTo" data-url="{{ params.navigateUrl }}">
+    <view class="nav-info">
+      <image class="image" mode="widthFix" src="{{ params.image }}"></image>
+      <view class="name">{{ params.name }}</view>
+    </view>
+    <text class="iconfont icon-xiangyoujiantou f-26 col-7"></text>
+</view>

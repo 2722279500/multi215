@@ -1,0 +1,26 @@
+/* common.wxss */
+
+/* @import "/utils/common.wxss"; */
+
+/* 单例导航组 */
+
+.nav-to,.nav-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  color: #444;
+}
+.nav-to {
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+.nav-info {
+  justify-content: flex-start;
+}
+
+.nav-info .image {
+  width: 52rpx; 
+  margin-right: 12rpx;
+}
+

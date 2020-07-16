@@ -1,0 +1,7 @@
+<view class="container">
+  <!-- 用户信息 -->
+  
+  <diy-component diyItems="{{ items }}" userInfo="{{ userInfo }}"></diy-component>
+
+  <custom-tab-bar></custom-tab-bar>
+</view>

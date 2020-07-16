@@ -1,0 +1,95 @@
+
+.box {
+  padding-bottom: 48rpx;
+}
+
+.title {
+  margin: 36rpx 0;
+  text-align: center;
+  font-size: 34rpx;
+  color: #333333;
+}
+
+.top {
+  width: 86%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-wrap {
+  width: 78%;
+}
+
+.input-wrap input {
+  padding: 12rpx 0;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #cccccc;
+}
+
+.scan-code {
+  width: 88rpx;
+  height: 88rpx;
+  flex-shrink: 0;
+  margin-top: 20rpx;
+}
+
+.scan-code image {
+  width: 100%;
+  height: 100%;
+}
+
+.scan-code-text {
+  font-size: 24rpx;
+  color: #999999;
+  text-align: center;
+}
+
+.demo-image {
+  width: 86%;
+  height: 424rpx;
+  margin: 36rpx auto;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.demo-image image {
+  width: 100%;
+  height: 100%;
+}
+
+.cue-text {
+  margin: 0 24rpx;
+  font-size: 24rpx;
+  color:  #ff5555;
+  text-align: center;
+}
+
+.btn-bind {
+  width: 70%;
+  height: 78rpx;
+  margin: 48rpx auto;
+  line-height: 78rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  border-radius: 58rpx;
+  background: #ff5555;
+}
+
+.explain {
+  width: 94%;
+  margin: 0 auto;
+}
+
+.explain-text {
+  margin-bottom: 24rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #666666;
+}
+
+.explain-item {
+  margin: 12rpx 24rpx;
+  font-size: 26rpx;
+  color: #666666;
+}
