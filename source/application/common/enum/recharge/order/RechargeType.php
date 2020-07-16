@@ -17,9 +17,6 @@ class RechargeType extends EnumBasics
     // 套餐充值
     const PLAN = 20;
 
-    // 储值卡充值
-    const CARD = 30;
-
     /**
      * 获取订单类型值
      * @return array
@@ -34,10 +31,6 @@ class RechargeType extends EnumBasics
             self::PLAN => [
                 'name' => '套餐充值',
                 'value' => self::PLAN,
-            ],
-            self::CARD => [
-                'name' => '储值卡充值',
-                'value' => self::CARD,
             ],
         ];
     }

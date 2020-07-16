@@ -8,7 +8,6 @@ use app\store\model\sharing\Category as SharingCategoryModel;
 use app\store\model\article\Category as ArticleCategoryModel;
 use app\store\model\WxappPage as WxappPageModel;
 use app\store\model\WxappCategory as WxappCategoryModel;
-use app\store\model\WxappNav as WxappNavModel;
 
 /**
  * 小程序页面管理
@@ -51,8 +50,7 @@ class Page extends Controller
         }
         // 接收post数据
         $post = $this->request->post('data', null, null);
-        $type = input('type/d',0);
-        if (!$model->add(json_decode($post, true),$type)) {
+        if (!$model->add(json_decode($post, true))) {
             return $this->renderError('添加失败');
         }
         return $this->renderSuccess('添加成功', url('wxapp.page/index'));
@@ -110,11 +108,9 @@ class Page extends Controller
      */
     public function setHome($page_id)
     {
-
-        $type = $this->request->post('type/d',0);
         // 帮助详情
         $model = WxappPageModel::detail($page_id);
-        if (!$model->setHome($type)) {
+        if (!$model->setHome()) {
             return $this->renderError($model->getError() ?: '设置失败');
         }
         return $this->renderSuccess('设置成功');
@@ -136,32 +132,6 @@ class Page extends Controller
         }
         return $this->fetch('category', compact('model'));
     }
-
-
-    /**
-     * 导航
-     * @return array|mixed
-     * @throws \think\exception\DbException
-     */
-    public function nav()
-    {
-        $model = new WxappNavModel;
-        $detail = $model::detail();
-        if (!$this->request->isAjax()) {
-            return $this->fetch('nav',[
-                'defaultData' => json_encode($model->getDefaultNav()),
-                'jsonData' => !empty($detail['nav_data'])? $detail['nav_data']:json_encode($model->getDefaultNav()),
-            ]);
-        }
-
-        // 接收post数据
-        $post = $this->request->post('data', null, null);
-        if (!$model->edit($post)) {
-            return $this->renderError('更新失败');
-        }
-        return $this->renderSuccess('更新成功');
-    }
-
 
     /**
      * 页面链接

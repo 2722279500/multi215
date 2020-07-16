@@ -4,6 +4,8 @@ namespace app\common\model;
 
 use app\common\library\helper;
 use app\common\service\Goods as GoodsService;
+use think\Request;
+use think\Db;
 
 /**
  * 商品模型
@@ -119,6 +121,10 @@ class Goods extends BaseModel
      */
     public function getList($param)
     {
+        $is_autarky = empty(Request()->param("is_autarky"))?0:Request()->param("is_autarky");
+        $city_id = empty(Request()->param("cityId"))?0:Request()->param("cityId");
+        $is_autarky = $is_autarky == "undefined" || empty($is_autarky)?0:1;
+        $s = \request()->request("s");
         // 商品列表获取条件
         $params = array_merge([
             'status' => 10,         // 商品状态
@@ -140,7 +146,7 @@ class Goods extends BaseModel
         } elseif ($params['sortType'] === 'sales') {
             $sort = ['goods_sales' => 'desc'];
         } elseif ($params['sortType'] === 'price') {
-            $sort = $params['sortPrice'] ? ['goods_max_price' => 'desc'] : ['goods_min_price'];
+            $sort = $params['sortPrice'] ? ['goods_max_price' => 'desc'] : ['goods_min_price' => 'asc'];
         }
         // 商品表名称
         $tableName = $this->getTable();
@@ -150,6 +156,79 @@ class Goods extends BaseModel
             ->where('goods_id', 'EXP', "= `$tableName`.`goods_id`")->buildSql();
         $maxPriceSql = $GoodsSku->field(['MAX(goods_price)'])
             ->where('goods_id', 'EXP', "= `$tableName`.`goods_id`")->buildSql();
+        if(citrixCheckSupplier() && !empty($city_id) && empty($params['category_id']))
+        {
+            if($s == "/api/page/index")
+            {
+                $merchant_list = Db::name("merchant_active")
+                                ->where(['city_id'=>$city_id])
+                                ->group("active_id")
+                                ->column("active_id");
+                $merchant_list = Db::name("category")
+                                ->where('supplier_id',"in",$merchant_list)
+                                ->column("category_id");
+            }else
+            {
+                $merchant_list = Db::name("merchant_active")
+                                ->where(['city_id'=>$city_id])
+                                ->group("category_id")
+                                ->column("category_id");
+            }
+            if(!empty($is_autarky))
+            {
+                $filter['category_id'] = empty($merchant_list)?$filter['category_id']:['IN',$merchant_list];
+            }else
+            {
+                $category_list =  Db::name("category")->where(['supplier_id'=>0])->group("category_id")->column("category_id");
+                $merge_list = array_merge($merchant_list,$category_list);
+                $filter['category_id'] = empty($merge_list)?$filter['category_id']:['IN',$merge_list];
+            }
+        }else if(citrixCheckSupplier() && !empty($city_id) && !empty($params['category_id']))
+        {
+            if($s == "/api/page/index")
+            {
+                $merchant_list = Db::name("merchant_active")
+                                ->where(['city_id'=>$city_id])
+                                ->group("active_id")
+                                ->column("active_id");
+                $merchant_list = Db::name("category")
+                                ->where('supplier_id',"in",$merchant_list)
+                                ->column("category_id");
+            }else
+            {
+                $merchant_list = Db::name("merchant_active")
+                                ->where(['city_id'=>$city_id])
+                                ->group("category_id")
+                                ->column("category_id");
+            }
+            if(!empty($is_autarky))
+            {
+                $supplier_id = Db::name("category")
+                                ->where(['category_id'=>$params['category_id']])
+                                ->value(['supplier_id']);
+                // 执行查询
+                $list = $this
+                    ->field(['*', '(sales_initial + sales_actual) as goods_sales',
+                        "$minPriceSql AS goods_min_price",
+                        "$maxPriceSql AS goods_max_price"
+                    ])
+                    ->with(['category', 'image.file', 'sku'])
+                    ->where('is_delete', '=', 0)
+                    ->where('supplier_id', '=', $supplier_id)
+                    ->where($filter)
+                    ->order($sort)
+                    ->paginate($params['listRows'], false, [
+                        'query' => \request()->request()
+                    ]);
+                // 整理列表数据并返回
+                return $this->setGoodsListData($list, true);
+            }else
+            {
+                $category_list =  Db::name("category")->where(['supplier_id'=>0])->group("category_id")->column("category_id");
+                $merge_list = array_merge($merchant_list,$category_list);
+                $filter['category_id'] = empty($params['category_id'])?['IN',$merge_list]:$filter['category_id'];
+            }
+        }
         // 执行查询
         $list = $this
             ->field(['*', '(sales_initial + sales_actual) as goods_sales',
@@ -160,6 +239,7 @@ class Goods extends BaseModel
             ->where('is_delete', '=', 0)
             ->where($filter)
             ->order($sort)
+            // ->fetchSql(true)
             ->paginate($params['listRows'], false, [
                 'query' => \request()->request()
             ]);

@@ -712,6 +712,40 @@ class Checkout
     {
         // 当前订单是否存在和使用积分抵扣
         $isExistPointsDeduction = $this->isExistPointsDeduction($order);
+        $goodsIdAttr = [];
+        if(!empty($order))
+        {
+            foreach ($order['goods_list'] as $k1 =>$v1) 
+            {
+                $k = $k1+1;
+                $goodsIdAttr[] = array($k=>$order['goods_list'][$k1]['supplier_id']);
+            }
+            $goodsIdAttr = array_unique($goodsIdAttr, SORT_REGULAR);  
+        }
+        $checkisIndDealer = $this->checkisIndDealer();
+        $getDealerCommission = $this->getDealerCommission();
+        $dealer_money_type = 10;
+        $first_money = 0;
+        $second_money = 0;
+        $third_money = 0;
+        if(!empty($checkisIndDealer['is_open']) && $checkisIndDealer['is_open'] == 1)
+        {
+            switch ($checkisIndDealer['level']) 
+            {
+                case 1:
+                    $first_money = $getDealerCommission['first_money'];
+                    break;
+                case 2:
+                    $first_money = $getDealerCommission['first_money'];
+                    $second_money = $getDealerCommission['second_money'];
+                    break;
+                case 3:
+                    $first_money = $getDealerCommission['first_money'];
+                    $second_money = $getDealerCommission['second_money'];
+                    $third_money = $getDealerCommission['third_money'];
+                    break;
+            }
+        }
         // 订单数据
         $data = [
             'user_id' => $this->user['user_id'],
@@ -730,6 +764,12 @@ class Checkout
             'order_source_id' => $this->orderSource['source_id'],
             'points_bonus' => $order['points_bonus'],
             'wxapp_id' => $this->wxapp_id,
+            'supplier_id' => json_encode($goodsIdAttr),
+            'is_ind_dealer'=>empty($checkisIndDealer['is_open'])?0:1,
+            'dealer_money_type'=>$dealer_money_type,
+            'first_money'=>$first_money,
+            'second_money'=>$second_money,
+            'third_money'=>$third_money,
         ];
         if ($order['delivery'] == DeliveryTypeEnum::EXPRESS) {
             $data['express_price'] = $order['express_price'];
@@ -739,7 +779,30 @@ class Checkout
         // 保存订单记录
         return $this->model->save($data);
     }
-
+    /**
+     * 获取分销配置
+     */
+    public function getDealerCommission()
+    {
+        if($info = \think\Db::name("dealer_setting")->where(['key'=>'commission'])->find())
+        {
+            $info['values'] = json_decode($info['values'],true);
+            return $info['values'];
+        }
+        return false;
+    }
+    /**
+     * 检查是否开启了分销
+     */
+    public function checkisIndDealer()
+    {
+        if($info = \think\Db::name("dealer_setting")->where(['key'=>'basic'])->find())
+        {
+            $info['values'] = json_decode($info['values'],true);
+            return $info['values'];
+        }
+        return false;
+    }
     /**
      * 保存订单商品信息
      * @param $order
@@ -747,11 +810,13 @@ class Checkout
      */
     private function saveOrderGoods($order)
     {
+        $order['c_express'] = empty($order['c_express'])?[]:json_decode($order['c_express'],true);
         // 当前订单是否存在和使用积分抵扣
         $isExistPointsDeduction = $this->isExistPointsDeduction($order);
         // 订单商品列表
         $goodsList = [];
         foreach ($order['goods_list'] as $goods) {
+            $express_price = empty($order['c_express'])?0.00:$order['c_express'][$goods['supplier_id']];
             /* @var GoodsModel $goods */
             $item = [
                 'user_id' => $this->user['user_id'],
@@ -785,6 +850,8 @@ class Checkout
                 'first_money' => $goods['first_money'],
                 'second_money' => $goods['second_money'],
                 'third_money' => $goods['third_money'],
+                'supplier_id' => $goods['supplier_id'],
+                'express_price' => empty($express_price)?$order['express_price']:$express_price
             ];
             // 记录订单商品来源id
             $item['goods_source_id'] = isset($goods['goods_source_id']) ? $goods['goods_source_id'] : 0;

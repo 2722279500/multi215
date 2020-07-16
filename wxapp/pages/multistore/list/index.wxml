@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- <view class="cont-box">
+    <view class="dis-flex search-input-box">
+      <view class="search-input">
+        <view class="dis-flex search-box">
+          <view class="left">
+            <icon color="rgba(180,180,180,1)" size="15" type="search"></icon>
+          </view>
+          <view class="right">
+            <input bindinput="getSearchContent" class="input" focus="true" placeholder="搜索门店" placeholderStyle="color:#aba9a9" type="text"></input>
+          </view>
+        </view>
+      </view>
+      <view class="serch-button">
+        <button bindtap="search" type="warn"> 搜索 </button>
+      </view>
+    </view>
+  </view> -->
+  
+  <view class="store-list">
+    <navigator url="../index?id={{item.supplier_id}}" wx:for="{{ storeList }}" wx:key="item.id" wx:for-item="item" open-type="navigate" class="store-item">
+      <view class="item-info">
+        <image class="" lazy-load="true" src="{{ item.thumb }}" mode="scaleToFill"></image>
+        <view class="item-text">
+          <view class="title">{{ item.name }}</view>
+          <view>商品数量: {{ item.goods_count }}</view>
+        </view>
+      </view>
+      <view class="item-btn">进店逛逛</view>
+    </navigator>
+  </view>
+</view>

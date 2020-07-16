@@ -4,6 +4,7 @@
 
 use think\Request;
 use think\Log;
+use think\Db;
 
 /**
  * 打印调试函数
@@ -132,23 +133,6 @@ function curlPost($url, $data = [])
     return $result;
 }
 
-if (!function_exists('p')) {
-    function p($a)
-    {
-        if(empty($a))
-        {
-            echo "<pre>";
-                var_dump($a);
-            echo "</pre>";
-        }else
-        {
-            echo "<pre>";
-                print_r($a);
-            echo "</pre>";
-        }
-    }
-}
-
 if (!function_exists('array_column')) {
     /**
      * array_column 兼容低版本php
@@ -177,37 +161,332 @@ if (!function_exists('array_column')) {
         return $result;
     }
 }
-
-if (!function_exists('randStr')) {
-    /**
-     * 生成随机数
-     * @param string  $len
-     * @param string  $format
-     * @return string
-     */
-    function randStr($len = 6, $format = 'NUMBER') { 
-        switch($format) {
-            case 'ALL':
-                $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-@#~';
-                break;
-            case 'ALPHA':
-                $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-                break;
-            case 'NUMBER':
-                $chars = '0123456789';
-                break;
-            default :
-                $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                break;
+if (!function_exists('p')) {
+    //打印
+    function p($a)
+    {
+        if(empty($a))
+        {
+            echo "<pre>";
+                var_dump($a);
+            echo "</pre>\r\n";
+        }else
+        {
+            echo "<pre>";
+                print_r($a);
+            echo "</pre>\r\n";
         }
-        mt_srand((double)microtime()*1000000*getmypid());
-        $str      = "";
-        while(strlen($str) < $len)
-            $str .= substr($chars, (mt_rand()%strlen($chars)), 1);
-        return $str;
+    }
+}
+if (!function_exists('citrixCheckSupplier')) 
+{
+    //检查平台是否开启多商户
+    function citrixCheckSupplier()
+    {
+        if($info = Db::name("merchant_setting")->where(['key'=>'basic'])->find())
+        {
+            $info['values'] = json_decode($info['values'],true);
+            if($info['values']['is_open'] == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+if (!function_exists('citrixCheckPartialShip')) 
+{
+    //检查这个订单，自己是不是最后一个发货的
+    function citrixCheckPartialShip($supplier_id,$order_id)
+    {
+        if($list = Db::name("order_goods")->where('supplier_id','NEQ',$supplier_id)->where(['delivery_status'=>10,'order_id'=>$order_id])->group("delivery_status")->column("delivery_status"))
+        {
+            return $list;
+        }
+        return false;
+    }
+}
+if (!function_exists('citrixGetShipPrice')) 
+{
+    //获得当前订单的运费(所属商户)
+    function citrixGetShipPrice($supplier_id,$order_id)
+    {
+        if($list = Db::name("order_goods")->field("order_goods_id,goods_id,total_num as goods_num,goods_sku_id")->where(['supplier_id'=>$supplier_id,"order_id"=>$order_id,"delivery_status"=>10])->select()->toArray())
+        {
+            return $list;
+        }
+        return false;
+    }
+}
+if (!function_exists('citrixGetSupplierExpressPrice')) 
+{
+    //获得当前商户可以获得的运费
+    function citrixGetSupplierExpressPrice($order_id,$supplier_id)
+    {
+        if($express_price = Db::name("order_goods")->where(['supplier_id'=>$supplier_id,"order_id"=>$order_id])->value("express_price"))
+        {
+            return $express_price;
+        }
+        return sprintf("%.2f",0);
+    }
+}
+if (!function_exists('citrixCheckFullPackage')) 
+{
+    //检查是否开启满额包邮
+    function citrixCheckFullPackage()
+    {
+        if($info = Db::name("setting")->where(['key'=>'full_free'])->find())
+        {
+            $info['values'] = json_decode($info['values'],true);
+            if($info['values']['is_open'] == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+if (!function_exists('citrixGetCouponMoney')) 
+{
+    //获取这一笔订单,优惠金额
+    function citrixGetCouponMoney($order_id,$supplier_id)
+    {
+        if($coupon_money = Db::name("order")->where(['order_id'=>$order_id])->value("coupon_money"))
+        {
+            if($info = Db::name("order_goods")->where(['order_id'=>$order_id])->group("supplier_id")->column("supplier_id"))
+            {
+                if(count($info) == 1 && array_shift($info)==$supplier_id)
+                {
+                    return "- ￥".sprintf("%.2f",$coupon_money);
+                }
+                else if(count($info) >= 2)
+                {
+                    $coupon_money = Db::name("order_goods")->where(['order_id'=>$order_id,'supplier_id'=>$supplier_id])->column("coupon_money");
+                    return '<span style="color:#f00;">- ￥'.sprintf("%.2f",array_sum($coupon_money)).'</span>';
+                }
+            }
+        }
+        return sprintf("%.2f",0);
+    }
+}
+if (!function_exists('citrixCheckCouponMoney')) 
+{
+    //这一笔订单当前商户是否使用了自己的优惠劵
+    function citrixCheckCouponMoney($order_id,$supplier_id)
+    {
+        if($coupon_money = Db::name("order")->where(['order_id'=>$order_id])->value("coupon_money"))
+        {
+            if($info = Db::name("order_goods")->where(['order_id'=>$order_id])->group("supplier_id")->column("supplier_id"))
+            {
+                if(count($info) == 1 && array_shift($info)==$supplier_id)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+if (!function_exists('citrixExpectedMoney')) 
+{
+    //当前商户预计可得金额
+    function citrixExpectedMoney($order_id,$supplier_id)
+    {
+        $express_price = Db::name("order_goods")->where(['order_id'=>$order_id,'supplier_id'=>$supplier_id])->group("express_price")->column("express_price");
+        if(citrixCheckCouponMoney($order_id,$supplier_id))
+        {
+            $total_price = Db::name("order_goods")->where(['order_id'=>$order_id,'supplier_id'=>$supplier_id])->column("total_price");
+            return sprintf("%.2f",array_sum($express_price)+array_sum($total_price));
+        }else
+        {
+            $total_pay_price = Db::name("order_goods")->where(['order_id'=>$order_id,'supplier_id'=>$supplier_id])->column("total_pay_price");
+            return sprintf("%.2f",array_sum($express_price)+array_sum($total_pay_price));
+        }
+        return sprintf("%.2f",0);
+    }
+}
+if (!function_exists('citrixSupplierProportional')) 
+{
+    //获取当前商户抽成比例
+    function citrixGetSupplierProportional($supplier_id)
+    {
+        return Db::name("merchant_active")->where(['active_id'=>$supplier_id])->value("supplier_rebate");
+    }
+}
+if (!function_exists('citrixCheckCoupon')) 
+{
+    //获取当前优惠券所属类型
+    function citrixCheckCoupon($coupon_id = 0)
+    {
+        if($coupon_type = Db::name("coupon")->where(['coupon_id'=>$coupon_id])->value("coupon_type"))
+        {
+            return $coupon_type;
+        }
+        return false;
+    }
+}
+if (!function_exists('citrixGetSupplierName')) 
+{
+    //获取当前商家名称
+    function citrixGetSupplierName($supplier_id)
+    {
+        if(empty($supplier_id))
+        {
+            return "<span style='color:#5eb95e;'>自营</span>";
+        }
+        return Db::name("merchant_active")->where(['active_id'=>$supplier_id])->value("name"); 
+    }
+}
+if (!function_exists('citrixCheckisIndDealer')) 
+{
+    //获取当前系统是否开启了分销
+    function citrixCheckisIndDealer()
+    {
+        if($info = Db::name("dealer_setting")->where(['key'=>'basic'])->find())
+        {
+            $info['values'] = json_decode($info['values'],true);
+            if(empty($info['values']))
+            {
+                return false;
+            }
+            return $info['values']['is_open'];
+        }
+        return false;
+    }
+}
+if (!function_exists('citrixAddSupplierRefund')) 
+{
+    //多商户商品退款
+    function citrixAddSupplierRefund($id)
+    {
+        $info = Db::name("order_refund")->where(['order_refund_id'=>$id])->find();
+        $goods_info = Db::name("order_goods")->where(['order_goods_id'=>$info['order_goods_id']])->find();
+
+        $data['money'] = $goods_info['total_pay_price'];
+        $data['supplier_id'] = $info['supplier_id'];
+        $data['scene'] = 50;
+        $data['wxapp_id'] = $info['wxapp_id'];
+        $data['create_time'] = time();
+        $data['order_refund_id'] = $info['order_refund_id'];
+        $data['describe'] = json_encode(['verify'=>['bz'=>"售后退货退款【{$goods_info['goods_name']}】"]]);
+
+        if(true == Db::name("merchant_balance_log")->where(['supplier_id'=>$data['supplier_id'],'scene'=>20])->where("create_time",">",time()+60)->find())
+        {
+            return false;
+        }
+        if(Db::name("merchant_balance_log")->insert($data))
+        {
+            return true;
+        }
+        return false;
     }
 }
 
+if (!function_exists('citrixDb')) 
+{
+    /**
+     * [citrixDb 获取数据库字段]
+     * @param  [type] $db    [数据库]
+     * @param  [type] $id    [条件]
+     * @param  [type] $field [条件字段]
+     * @param  [type] $value [字段结果]
+     * @return [type]        [description]
+     */
+    function citrixDb($db,$field,$id,$value)
+    {
+        return Db::name($db)->where([$field=>$id])->value($value);
+    }
+}
+
+if (!function_exists('citrixGetTrade')) 
+{
+    //获取当前系统多天允许申请售后
+    function citrixGetTrade()
+    {
+        $user = \think\Session::get("yoshop_supplier.user");
+        $wxapp_id = $user['wxapp_id'];
+        if($info = Db::name("setting")->where(['key'=>'trade','wxapp_id'=>$wxapp_id])->find())
+        {
+            $info['values'] = json_decode($info['values'],true);
+            if(empty($info['values']))
+            {
+                return false;
+            }
+            if(empty($info['values']['order']))
+            {
+                return false;
+            }
+            return $info['values']['order']['refund_days'];
+        }
+        return false;
+    }
+}
+//获取当前商户,历史收入金额
+function citrixGetSupplierCanMoneyCount($supplier_id)
+{   
+    $after_day = citrixGetTrade();
+    if($after_day >= 1)
+    {
+        $days = citrixGetTrade();
+        $days = $days*86400;
+        $time = time()-$days;
+        return sprintf("%.2f",Db::name("merchant_balance_log")->where("create_time","<=",$time)->where(['supplier_id'=>$supplier_id,"scene"=>10])->sum("money"));
+    }
+    return sprintf("%.2f",Db::name("merchant_balance_log")->where(['supplier_id'=>$supplier_id,"scene"=>10])->sum("money"));
+}
+//获取当前商户,历史支出金额
+function citrixGetSupplierNoMoneyCount($supplier_id)
+{
+    return sprintf("%.2f",Db::name("merchant_balance_log")->where(['supplier_id'=>$supplier_id,"scene"=>20])->sum("money"));
+}
+//获取当前商户,可以使用的金额
+function citrixGetSupplierMoneyCount($supplier_id)
+{
+    return sprintf("%.2f",citrixGetSupplierCanMoneyCount($supplier_id)-citrixGetSupplierNoMoneyCount($supplier_id));
+}
+//获取当前商户,冻结中的金额
+function citrixGetSupplierFrozenMoneyCount($supplier_id)
+{
+    $after_day = citrixGetTrade();
+    if($after_day >= 1)
+    {
+        $days = citrixGetTrade();
+        $days = $days*86400;
+        $time = time()-$days;
+        return sprintf("%.2f",Db::name("merchant_balance_log")->where("create_time",">=",$time)->where(['supplier_id'=>$supplier_id,"scene"=>10])->sum("money"));
+    }
+    return sprintf("%.2f",0);
+}
+// 计算出上个月第一天
+function citrixGetLastMonthFirstDay()
+{
+    return date('Y-m-d 00:00:00', strtotime(date('Y-m-01') . ' -1 month'));
+}
+// 计算出上个月最后一天
+function citrixGetLastMonthTheLastDay()
+{
+    return date('Y-m-d 23:59:59', strtotime(date('Y-m-01') . ' -1 day'));
+}
+// 计算出本月第一天
+function citrixGetThisMonthFirstDay()
+{
+    return date("Y-m-01 00:00:00");
+}
+// 计算出本月最后一天
+function citrixGetThisMonthTheLastDay()
+{
+    return date("Y-m-d 23:59:59",strtotime(date('Y-m-01', strtotime(date("Y-m-d")))." +1 month -1 day"));
+}
+//计算上周一的时间戳
+function citrixGetLastMonday()
+{
+    return date("Y-m-d 00:00:00",mktime(0,0,0,date('m'),date('d')-date('w')+1-7,date('Y')));
+}
+//计算上周日的时间戳
+function citrixGetLastSunday()
+{
+    return date("Y-m-d 23:59:59",mktime(23,59,59,date('m'),date('d')-date('w')+7-7,date('Y')));
+}
 /**
  * 多维数组合并
  * @param $array1
@@ -403,7 +682,7 @@ function filter_emoji($text)
 function str_substr($str, $length = 30)
 {
     if (strlen($str) > $length) {
-        $str = mb_substr($str, 0, $length);
+        $str = mb_substr($str, 0, $length, 'utf-8');
     }
     return $str;
 }

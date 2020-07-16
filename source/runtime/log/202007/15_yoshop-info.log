@@ -1,0 +1,9 @@
+---------------------------------------------------------------
+[ 2020-07-15T16:57:57+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/user.index/detail&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[ yoshop-info ] behavior Order --close --close_days 3 --deadline_time 1594544277 --orderIds []
+[ yoshop-info ] behavior Order --receive --receive_days 10 --deadline_time 1593939477 --orderIds []
+[ yoshop-info ] behavior Order --settled --refund_days 2 --deadline_time 1594630677 --orderIds []
+[ yoshop-info ] behavior sharp Order --close --close_minute 10 --deadline_time 1594802877 --orderIds []
+---------------------------------------------------------------
+[ 2020-07-15T16:58:04+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/user.coupon/receive
+[ yoshop-info ] UserCoupon --setExpired --couponIds []

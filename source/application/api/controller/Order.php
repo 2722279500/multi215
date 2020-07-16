@@ -51,10 +51,12 @@ class Order extends Controller
             'goods_num' => 0,
             'goods_sku_id' => '',
         ]));
+
         // 表单验证
         if (!$this->validate->scene('buyNow')->check($params)) {
             return $this->renderError($this->validate->getError());
         }
+        // $supplier_id = \think\Db::name("goods")->where(['goods_id'=>$params['goods_id']])->value("supplier_id");
         // 立即购买：获取订单商品列表
         $model = new OrderModel;
         $goodsList = $model->getOrderGoodsListByNow(
@@ -109,6 +111,38 @@ class Order extends Controller
         $goodsList = $CartModel->getList($params['cart_ids']);
         // 获取订单结算信息
         $orderInfo = $Checkout->onCheckout($this->user, $goodsList);
+        if(citrixCheckSupplier())
+        {
+            $express_price = 0.00;
+            $cart_ids = $params['cart_ids'];
+            $cart_ids = explode(",", $cart_ids);
+            $db = \think\Db::name("goods");
+            $data = [];
+            $attr = [];
+            $express = [];
+            foreach ($cart_ids as $k1 => $v1) 
+            {
+                $explode_ids = explode("_",$cart_ids[$k1]);
+                $goods_id = $explode_ids[0];
+                unset($explode_ids[0]);
+                $spec_sku_id = implode("_", $explode_ids);
+                $supplier_id = $db->where(['goods_id'=>$goods_id])->value("supplier_id");
+                $data[$goods_id] = ['supplier_id'=>$supplier_id,'val'=>$goods_id.'_'.$spec_sku_id];
+                $attr[$data[$goods_id]['supplier_id']] = empty($attr[$data[$goods_id]['supplier_id']])?$data[$goods_id]['val']:$data[$goods_id]['val'].','.$attr[$data[$goods_id]['supplier_id']];
+            }
+            foreach ($attr as $k3 => $v3) 
+            {
+                // 购物车商品列表
+                $_goodsList = $CartModel->getList($attr[$k3]);
+                // 获取订单结算信息
+                $_orderInfo = $Checkout->onCheckout($this->user, $_goodsList);
+                $express_price += $_orderInfo['express_price'];
+                $express[$k3] = $_orderInfo['express_price'];
+            }
+            $orderInfo['express_price'] = sprintf("%.2f",$express_price); 
+            $orderInfo['order_pay_price'] = sprintf("%.2f",$orderInfo['order_price']+(float)$express_price); 
+            $orderInfo['c_express'] = json_encode($express);
+        }
         if ($this->request->isGet()) {
             return $this->renderSuccess($orderInfo);
         }

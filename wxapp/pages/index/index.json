@@ -1,7 +1,6 @@
 {
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "diy-component": "/components/diy/index",
-    "custom-tab-bar": "/components/custom-tab-bar/index"
+    "diy-component": "/components/diy/index"
   }
 }

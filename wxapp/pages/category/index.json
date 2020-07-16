@@ -1,6 +1,3 @@
 {
-    "navigationBarTitleText": "全部分类",
-    "usingComponents": {
-        "custom-tab-bar": "/components/custom-tab-bar/index"
-    }
+    "navigationBarTitleText": "全部分类"
 }

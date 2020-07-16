@@ -16,16 +16,17 @@ Page({
    */
   onLoad: function(options) {
     // 获取物流动态
-    this.getExpressDynamic(options.order_id);
+    this.getExpressDynamic(options.order_id,options.goods_id);
   },
 
   /**
    * 获取物流动态
    */
-  getExpressDynamic: function(order_id) {
+  getExpressDynamic: function(order_id,goods_id) {
     let _this = this;
     App._get('user.order/express', {
-        order_id
+        order_id,
+        goods_id,
       }, function(result) {
         _this.setData(result.data);
       },

@@ -75,6 +75,7 @@ class Express
     /**
      * 获取订单的配送费用
      * @return float|string
+
      */
     public function getDeliveryFee()
     {

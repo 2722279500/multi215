@@ -2,10 +2,14 @@
 
 // 数据库配置
 $config = [
-    'host' => '182.92.186.108',
-    'database' => 'yinhuo_qiweido',
-    'username' => 'yinhuo_qiweido',
-    'password' => '8DNXFYH4mcHcHinj',
+    'host' => '47.104.188.74',
+    'database' => 'shop215_qiweido',
+    'username' => 'shop215_qiweido',
+    'password' => 'e4P3zKHeMSYywnAd',
+    // 'host' => '127.0.0.1',
+    // 'database' => 'shop215',
+    // 'username' => 'shop215',
+    // 'password' => 'shop215888',
     'port' => '3306',
     'charset' => 'utf8',
 ];

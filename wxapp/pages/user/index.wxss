@@ -87,7 +87,6 @@
   border-top: 1rpx solid #eee;
   border-radius: 5rpx;
   background: #fff;
-  border-radius: 8rpx;
 }
 
 .order-navbar-header {
@@ -122,10 +121,6 @@
   margin-right: 10rpx;
 }
 
-.diy-user .order-navbar-footer .order-navbar-item .order-navbar__name {
-  margin-right: 0;
-}
-
 .order-navbar-footer .order-navbar-item .order-badge {
   position: absolute;
   top: 0;
@@ -141,13 +136,6 @@
   padding: 1rpx;
 }
 
-.diy-user .order-navbar image {
-  display: inline-block;
-  width: 54rpx;
-  height: 54rpx;
-  margin: 0 auto;
-}
-
 /* 菜单列表 */
 
 .menus-list {
@@ -156,7 +144,7 @@
 
 .menus-list .menus-item {
   position: relative;
-  padding: 24rpx 24rpx;
+  padding: 28rpx 28rpx;
   border-bottom: 1rpx solid #eee;
 }
 
@@ -165,18 +153,12 @@
   margin-left: 20rpx;
 }
 
-.menus image {
-  width: 54rpx;
-  height: 54rpx;
-}
-
 /* 我的钱包 */
 
 .my-asset {
   background: #fff;
   /* height: 70rpx; */
   padding: 26rpx 0;
-  box-sizing: border-box;
 }
 
 .my-asset .asset-right {
@@ -209,17 +191,6 @@
 .asset-left_item .item-value text {
   font-size: 32rpx;
   color: red;
-}
-
-.purse .asset-left_item .item-value {
-  width: auto;
-  height: 56rpx;
-  margin-bottom: 10rpx;
-}
-
-.purse .asset-left_item .item-value image {
-  width: 54rpx;
-  height: 54rpx;
 }
 
 .asset-left_item .item-name {

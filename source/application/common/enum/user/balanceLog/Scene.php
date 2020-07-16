@@ -23,9 +23,6 @@ class Scene extends EnumBasics
     // 订单退款
     const REFUND = 40;
 
-    // 储值卡充值
-    const CARD = 50;
-
     /**
      * 获取订单类型值
      * @return array
@@ -52,11 +49,6 @@ class Scene extends EnumBasics
                 'name' => '订单退款',
                 'value' => self::REFUND,
                 'describe' => '订单退款：%s',
-            ],
-            self::CARD => [
-                'name' => '储值卡充值',
-                'value' => self::CARD,
-                'describe' => '储值卡充值：%s',
             ],
         ];
     }

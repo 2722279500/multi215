@@ -1,0 +1,51 @@
+<view class="store">
+  <view class="store-header" style="background-image: url('{{ info.image }}');">
+  	<view class="header-img" style="background-image: url('{{ info.thumb }}');">
+  		
+  	</view>
+  	<view class="header-info">
+  		<view>{{ info.name }}</view>
+  		<view>商品数量: {{ list.length }}</view>
+  	</view>
+  </view>
+
+  <view class="search-nav">
+  	<navigator url="/pages/search/index" open-type="navigate" class="nav-item"><icon class="text-center" size="18" type="search"></icon></navigator>
+  	<view class="nav-item select">全部</view>
+    <navigator url="goodsclass/index?supplier_id={{ info.supplier_id }}" hover-class="none" open-type="navigate" class="nav-item">分类</navigator>
+    <navigator url="info/index?supplier_id={{ info.supplier_id }}" hover-class="none" open-type="navigate" class="nav-item">简介</navigator>
+  </view>
+
+  <view class="new">
+    <view class="category-list">
+      <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list}}" wx:key="item.id" wx:for-item="item">
+        <view class="left">
+          <view class="img">
+            <image class="goodsImg" mode="scaleToFill" src="{{ item.file_name }}"></image>
+          </view>
+        </view>
+        <view class="right">
+          <view class="cont">
+            <!-- 商品名称 -->
+            <text class="title f-29 twolist-hidden">{{item.goods_name}}</text>
+            <block wx:if="{{ showView }}">
+              <!-- 商品卖点 -->
+              <view class="selling_point onelist-hidden">
+                <text>{{ item.selling_point }}</text>
+              </view>
+              <!-- 商品销量 -->
+              <view class="goods_sales dis-flex">
+                <text class="onelist-hidden">已售{{ item.goods_sales }}件</text>
+              </view>
+            </block>
+            <!-- 商品价格 -->
+            <view class="detail-price onelist-hidden">
+              <text class="goods-price f-30 col-m">￥{{item.goods_price}}</text>
+              <text class="line-price col-9 f-24" wx:if="{{item.line_price>0}}">{{item.line_price}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

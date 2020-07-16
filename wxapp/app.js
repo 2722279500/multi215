@@ -21,10 +21,9 @@ App({
    * 全局变量
    */
   globalData: {
-    selectedIndex: 0,
-    user_id: null
+    user_id: null,
+    is_open:0
   },
-
 
   // api地址
   api_root: siteinfo.siteroot + 'index.php?s=/api/',
@@ -34,11 +33,30 @@ App({
    */
   onLaunch(e) {
     let _this = this;
-
+    _this.citrixGetSupplierSys();
     // 小程序主动更新
     _this.updateManager();
     // 小程序启动场景
     _this.onStartupScene(e.query);
+  },
+
+  citrixGetSupplierSys()
+  {
+    var _this=this;
+    wx.request({
+      url: _this.api_root+'supplier/getSupplierSetting',
+      data: {
+        wxapp_id:  _this.getWxappId()
+      },
+      method: "POST", 
+      header: {
+        'content-type': 'application/json'
+      },
+      success: (res) => 
+      {
+        _this.globalData.is_open = res.data.data.is_open;
+      }
+    });
   },
 
   /**
@@ -176,6 +194,25 @@ App({
     data = data || {};
     data.wxapp_id = _this.getWxappId();
 
+    // if(_this.globalData.is_open == 1){
+      /**
+       * [city description]
+       * @type {[type]}
+       * 缓存? city : 默认
+       */
+      let city = wx.getStorageSync('supplier_city');
+      if (city) {
+        data.cityId = city.id;
+        data.cityName = city.name
+      } else {
+        data.cityId = 2;
+        data.cityName = '北京市'
+      };
+    // }
+    var cPages = getCurrentPages() //获取加载的页面
+    var cCurrentPage = cPages[cPages.length - 1] //获取当前页面的对象
+    console.log(cCurrentPage.route);
+
     // if (typeof check_login === 'undefined')
     //   check_login = true;
 
@@ -231,6 +268,26 @@ App({
     isShowNavBarLoading || true;
     data.wxapp_id = _this.getWxappId();
     data.token = wx.getStorageSync('token');
+
+    // if(_this.globalData.is_open == 1){
+      /**
+       * [city description]
+       * @type {[type]}
+       * 缓存? city : 默认
+       */
+      let city = wx.getStorageSync('supplier_city');
+      if (city) {
+        data.cityId = city.id;
+        data.cityName = city.name
+      } else {
+        data.cityId = 2;
+        data.cityName = '北京市'
+      };
+    // }
+
+    var cPages = getCurrentPages() //获取加载的页面
+    var cCurrentPage = cPages[cPages.length - 1] //获取当前页面的对象
+    console.log(cCurrentPage.route);
 
     // 在当前页面显示导航条加载动画
     if (isShowNavBarLoading == true) {

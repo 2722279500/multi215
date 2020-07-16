@@ -189,7 +189,7 @@
         show_success: function (msg, url) {
             layer.msg(msg, {
                 icon: 1
-                , time: 1500
+                , time: 1200
                 // , anim: 1
                 , shade: 0.5
                 , end: function () {

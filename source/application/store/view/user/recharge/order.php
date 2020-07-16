@@ -101,10 +101,10 @@
                                     <td class="am-text-middle"><?= $item['order_no'] ?></td>
                                     <td class="am-text-middle">
                                         <span class="am-badge
-                                        <?= $item['recharge_type']['value'] == 10 ? 'am-badge-secondary' : ($item['recharge_type']['value'] == 20 ? 'am-badge-success' : 'am-badge-warning') ?>">
+                                        <?= $item['recharge_type']['value'] == 10 ? 'am-badge-secondary' : 'am-badge-success' ?>">
                                                 <?= $item['recharge_type']['text'] ?></span>
                                     </td>
-                                    <td class="am-text-middle"><?= $item['order_plan']['plan_name'] ?: '--' ?></td>
+                                    <td class="am-text-middle"><?= !empty($item['order_plan']) ? $item['order_plan']['plan_name'] : '--' ?></td>
                                     <td class="am-text-middle"><?= $item['pay_price'] ?></td>
                                     <td class="am-text-middle"><?= $item['gift_money'] ?></td>
                                     <td class="am-text-middle">

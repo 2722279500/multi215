@@ -161,7 +161,7 @@
                                 </tr>
                             <?php endforeach; else: ?>
                                 <tr>
-                                    <td colspan="12" class="am-text-center">暂无记录</td>
+                                    <td colspan="13" class="am-text-center">暂无记录</td>
                                 </tr>
                             <?php endif; ?>
                             </tbody>

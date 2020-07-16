@@ -35,6 +35,11 @@ class Active extends ActiveModel
             ->paginate(15, false, [
                 'query' => \request()->request()
             ]);
+
+
+        //     echo "<pre>";
+        //     print_r($this->getlastsql());
+        // echo "</pre>";exit;
         if (!$list->isEmpty()) {
             // 设置商品数据
             $list = GoodsService::setGoodsData($list);

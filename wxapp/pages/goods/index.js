@@ -361,19 +361,6 @@ Page({
     };
   },
 
-   //分享朋友圈
-   onShareTimeline(){
-    let _this = this;
-    // 构建页面参数
-    let params = App.getShareUrlParams({
-      'goods_id': _this.data.goods_id
-    });
-    return {
-      title: _this.data.detail.goods_name,
-      path: "/pages/goods/index?" + params
-    };
-  },
-
   /**
    * 显示分享选项
    */

@@ -10,7 +10,7 @@ Component({
    */
   properties: {
     diyItems: Object,
-    userInfo: Object
+    city: Object,
   },
 
 })

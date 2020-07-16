@@ -517,19 +517,4 @@ Page({
     };
   },
 
-   //分享朋友圈
-  onShareTimeline(){
-    let _this = this;
-    // 构建页面参数
-    let params = App.getShareUrlParams({
-      active_time_id: _this.data.active_time_id,
-      sharp_goods_id: _this.data.sharp_goods_id,
-    });
-    return {
-      title: _this.data.goods.goods_name,
-      path: `/pages/sharp/goods/index?${params}`
-    };
-  } 
-
-
 })

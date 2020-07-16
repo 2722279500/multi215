@@ -193,7 +193,7 @@ class Order extends BaseModel
      */
     public function getDeliveryStatusAttr($value)
     {
-        $status = [10 => '待发货', 20 => '已发货'];
+        $status = [10 => '待发货', 20 => '已发货', 30 => '部分发货'];
         return ['text' => $status[$value], 'value' => $value];
     }
 

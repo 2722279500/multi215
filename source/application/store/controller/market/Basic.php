@@ -30,8 +30,19 @@ class Basic extends Controller
             ]);
         }
         $model = new SettingModel;
-        if ($model->edit('full_free', $this->postData('model'))) {
-            return $this->renderSuccess('操作成功');
+        $param = $this->postData('model');
+        if(citrixCheckSupplier())
+        {
+            $param['is_open'] = 0;
+            $param['money'] = '';
+            if ($model->edit('full_free', $param)) {
+                return $this->renderError('请先关闭多商户后,开启满额包邮');
+            }
+        }else
+        {
+            if ($model->edit('full_free', $this->postData('model'))) {
+                return $this->renderSuccess('操作成功');
+            }
         }
         return $this->renderError($model->getError() ?: '操作失败');
     }

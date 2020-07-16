@@ -21,8 +21,8 @@ class Category extends CategoryModel
         'update_time'
     ];
 
-    public static function getList() {
-
+    public static function getList() 
+    {
     }
 
 }

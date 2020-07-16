@@ -61,7 +61,7 @@
 /* 商品列表 */
 
 .checkout_list {
-  padding: 20rpx 30rpx 4rpx 30rpx;
+  padding: 0rpx 30rpx 4rpx 30rpx;
   background: #fff;
   border-bottom: 1rpx solid rgb(248, 248, 248);
 }
@@ -300,4 +300,28 @@
 
 .flow-extract-contact .item_ipt .input-placeholder {
   font-size: 28rpx;
+}
+
+.supplier
+{
+  width: 100%;
+  position: unset;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left:2rpx;
+  background-color: #fff;
+}
+.supplier-image
+{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx 20rpx 20rpx 0rpx;
+  float: left;
+}
+.supplier-text
+{
+  height: 80rpx;
+  line-height: 80rpx;
+  float: left;
+  /*color: #ff495e;*/
 }

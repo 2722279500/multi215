@@ -1,0 +1,60 @@
+@import "/pages/search/index.wxss";
+page {
+  background: #fff;
+}
+
+/* 搜索框 */
+
+.index-search-box {
+  background: #fff;
+  padding: 13rpx 13rpx 18rpx 13rpx;
+}
+
+.index-search {
+  border-bottom: 0;
+  background: #F4F4F4;
+  border-radius: 50rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #999;
+  box-sizing: border-box;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+}
+
+.city-input {
+  background: #F4F4F4;
+}
+
+.text-center {
+  flex-shrink: 0;
+  margin: 0 24rpx;
+}
+
+.index-cont-search {
+  text-align: left;
+}
+
+.city-list {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 12rpx;
+  box-sizing: border-box;  
+}
+
+.city-list .city-item {
+  width: 25%;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  background-color: #F4F4F4;
+  background-clip: content-box;
+  padding: 0 12rpx;
+  margin: 12rpx 0;
+  box-sizing: border-box;
+}

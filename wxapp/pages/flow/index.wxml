@@ -6,6 +6,10 @@
         <text wx:if="{{ action === 'edit' }}" catchtap="switchAction" class="f-30" data-action="complete">完成</text>
       </view>
       <view wx:for="{{goods_list}}" wx:key="this">
+        <view class="f-28 col-12 supplier">
+          <image mode="aspectFill" class="supplier-image" src="../../images/supplier.png"></image>
+          <view class="f-28 col-12 supplier-text">{{ item.supplier_name }}</view>
+        </view>
         <view class="dish-item dis-flex flex-y-center" data-index="{{index}}" style="{{item.txtStyle}}">
           <!-- 选择框 -->
           <view class="dish-item-radio" catchtap="onChecked" data-index="{{ index }}">
@@ -78,5 +82,4 @@
       </view>
     </view>
   </view>
-  <custom-tab-bar></custom-tab-bar>
 </view>

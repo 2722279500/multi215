@@ -1,0 +1,2 @@
+/* pages/multistore/goodsclass/index.wxss */
+@import '/pages/category/index.wxss';

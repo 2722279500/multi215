@@ -59,7 +59,12 @@
     "pages/sharp/index/index",
     "pages/sharp/goods/index",
     "pages/live/index",
-    "pages/rechargecard/index"
+    "pages/rechargecard/index",
+    "components/diy/navigate/navigate",
+    "pages/multistore/index",
+    "pages/multistore/city/index",
+    "pages/multistore/list/index",
+    "pages/multistore/goodsclass/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -69,7 +74,7 @@
   },
   "tabBar": {
     "color": "#6e6d6b",
-    "selectedColor": "#333333",
+    "selectedColor": "#fd4a5f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -99,12 +104,6 @@
       }
     ],
     "position": "bottom"
-  },
-  "plugins": {
-    "live-player-plugin": {
-      "version": "1.0.7",
-      "provider": "wx2b03c6e691cd7370"
-    }
   },
   "debug": false,
   "permission": {

@@ -76,6 +76,7 @@
                             <thead>
                             <tr>
                                 <th>商品ID</th>
+                                <th>所属商家</th>
                                 <th>商品图片</th>
                                 <th>商品名称</th>
                                 <th>商品分类</th>
@@ -90,6 +91,9 @@
                             <?php if (!$list->isEmpty()): foreach ($list as $item): ?>
                                 <tr>
                                     <td class="am-text-middle"><?= $item['goods_id'] ?></td>
+                                    <td class="am-text-middle">
+                                        <p><?= citrixGetSupplierName($item['supplier_id']) ?></p>
+                                    </td>
                                     <td class="am-text-middle">
                                         <a href="<?= $item['image'][0]['file_path'] ?>"
                                            title="点击查看大图" target="_blank">

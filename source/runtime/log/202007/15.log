@@ -1,0 +1,1101 @@
+---------------------------------------------------------------
+[ 2020-07-15T16:57:17+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/supplier/getSupplierSetting
+[运行时间：0.443577s] [吞吐率：2.25req/s] [内存消耗：3,720.41kb] [文件加载：57]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'supplier',
+    2 => 'getSupplierSetting',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '20',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000385s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Supplier->getSupplierSetting[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Supplier.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:18+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/ccity/cinfo
+[运行时间：0.244751s] [吞吐率：4.09req/s] [内存消耗：3,725.80kb] [文件加载：53]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'ccity',
+    2 => 'cinfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '135',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'city' => '合肥市',
+  'wxapp_id' => '10001',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000266s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Ccity->cinfo[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Ccity.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:19+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.798812s] [吞吐率：0.56req/s] [内存消耗：5,895.48kb] [文件加载：92]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000186s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.107970s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.107990s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:19+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.317423s] [吞吐率：0.76req/s] [内存消耗：5,831.45kb] [文件加载：91]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000199s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000200s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000210s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:25+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/supplier/getSupplierSetting
+[运行时间：0.186761s] [吞吐率：5.35req/s] [内存消耗：3,720.66kb] [文件加载：57]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'supplier',
+    2 => 'getSupplierSetting',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '20',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000222s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Supplier->getSupplierSetting[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Supplier.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:25+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/ccity/cinfo
+[运行时间：0.200257s] [吞吐率：4.99req/s] [内存消耗：3,726.13kb] [文件加载：53]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'ccity',
+    2 => 'cinfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '135',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'city' => '合肥市',
+  'wxapp_id' => '10001',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000201s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Ccity->cinfo[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Ccity.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:26+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.256110s] [吞吐率：0.80req/s] [内存消耗：5,831.45kb] [文件加载：91]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000221s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000230s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000242s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:27+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.861248s] [吞吐率：0.54req/s] [内存消耗：5,831.45kb] [文件加载：91]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000194s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000201s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000212s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:35+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/supplier/getSupplierSetting
+[运行时间：0.176643s] [吞吐率：5.66req/s] [内存消耗：3,720.66kb] [文件加载：57]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'supplier',
+    2 => 'getSupplierSetting',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '20',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000247s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Supplier->getSupplierSetting[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Supplier.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:35+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/ccity/cinfo
+[运行时间：0.255668s] [吞吐率：3.91req/s] [内存消耗：3,726.13kb] [文件加载：53]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'ccity',
+    2 => 'cinfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '135',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'city' => '合肥市',
+  'wxapp_id' => '10001',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000273s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Ccity->cinfo[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Ccity.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:37+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.763326s] [吞吐率：0.57req/s] [内存消耗：5,831.45kb] [文件加载：91]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000306s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000271s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000287s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:37+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.324508s] [吞吐率：0.75req/s] [内存消耗：5,831.45kb] [文件加载：91]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000200s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000196s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000206s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:50+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/supplier/getSupplierSetting
+[运行时间：0.211758s] [吞吐率：4.72req/s] [内存消耗：3,720.66kb] [文件加载：57]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'supplier',
+    2 => 'getSupplierSetting',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '20',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000194s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Supplier->getSupplierSetting[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Supplier.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:50+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/ccity/cinfo
+[运行时间：0.208857s] [吞吐率：4.79req/s] [内存消耗：3,726.13kb] [文件加载：53]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'ccity',
+    2 => 'cinfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '135',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'city' => '合肥市',
+  'wxapp_id' => '10001',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000212s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Ccity->cinfo[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Ccity.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:51+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.716419s] [吞吐率：0.58req/s] [内存消耗：5,831.45kb] [文件加载：91]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000270s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000207s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000219s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:52+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/page/index&page_id=0&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.299021s] [吞吐率：0.77req/s] [内存消耗：5,831.45kb] [文件加载：91]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'page',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'page_id' => '0',
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000196s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Page->index[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Page.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000220s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000231s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:57:57+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/user.index/detail&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：1.119740s] [吞吐率：0.89req/s] [内存消耗：5,402.34kb] [文件加载：93]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user.index',
+    2 => 'detail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000206s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\user\Index->detail[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\user\Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000210s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000224s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\Order @order [ RunTime:0.000023s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\Order @order [ RunTime:0.031241s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\sharp\Order @order [ RunTime:0.209176s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\Order @order [ RunTime:0.209187s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:58:00+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/coupon/lists&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=8ea05e0ee04c40954500fd18e8b1d0a7
+[运行时间：0.640332s] [吞吐率：1.56req/s] [内存消耗：4,536.53kb] [文件加载：71]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'coupon',
+    2 => 'lists',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000324s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Coupon->lists[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Coupon.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000397s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000444s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:58:04+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/user.coupon/receive
+[运行时间：0.594297s] [吞吐率：1.68req/s] [内存消耗：4,566.79kb] [文件加载：76]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user.coupon',
+    2 => 'receive',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '115',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'coupon_id' => '42',
+  'wxapp_id' => '10001',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000189s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.114589s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.114607s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000195s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000206s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:58:07+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/user/login
+[运行时间：1.312721s] [吞吐率：0.76req/s] [内存消耗：4,193.82kb] [文件加载：67]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '1251',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'code' => '023agxVs1Mky9h06xcUs1NjwVs1agxV5',
+  'user_info' => '{&quot;nickName&quot;:&quot;流年似水ゞ乱浮生&quot;,&quot;gender&quot;:1,&quot;language&quot;:&quot;zh_CN&quot;,&quot;city&quot;:&quot;阜阳&quot;,&quot;province&quot;:&quot;安徽&quot;,&quot;country&quot;:&quot;中国&quot;,&quot;avatarUrl&quot;:&quot;https://wx.qlogo.cn/mmopen/vi_32/Npyia0EiapELJUH2p1b7oBDy4YMzpMUeIhwKsKnic7ia8U1eman3MA38qNMSric3wfOC86iae0rqsNSicmA9P8Ok9zYVA/132&quot;}',
+  'encrypted_data' => 'Q/QhhgDtoXd5GsA1S4KyJ5ACOfe4Q5iLT8XBlwBKNP8B/2eZ3CkvCSZv0z2Ilgl2X/nbRuAC3mNMNc7RMNTVvnllxNv03nSSnpSVyk46KmQVT6eDRQmtiLJiv+I57/fDSvTXsi6nCk0ZwYzDKqkz+ax5wewQh3N13tBfKCMkSRUjwqMWzuj8j9SIp+kbuetnnVSnwhYDthD20tUHX161nhCfOVou/HdQFfHqwAZHDMOjvXhz2ixQyjPYgXG5M2vIqt5Oa/zJrk5vzxF2V3QTMBBozhbJkH3AluJxRmJeTWKkPHH0sM5YCDHGS7Cx+dIT2VMsB/sQSbIvPPMmF5UhCjE2ZZPuFGQfBVpExqQh9Qs6W4pHrAgDKN93e4+i3fWVPSi8gHdMkKUquvMXwu8uU4YYTg7OkTMWFD/bbJPUg716LrDcQpMQ5grVDHQrigngm+WAAfRTvQ49JHwA9ibjJEY54tmGUXyQQyZlVaPhLYDJQhwSEFbD98KfiLo9Qgam',
+  'iv' => 'rfM1VyKEdSLyaouOF9aoZg==',
+  'signature' => '225101d56978c43ab0d3c8e7ebcf37656848cf79',
+  'referee_id' => '',
+  'wxapp_id' => '10001',
+  'token' => '8ea05e0ee04c40954500fd18e8b1d0a7',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000193s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\User->login[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\User.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:58:08+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/coupon/lists&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=ff0657fd165d4455d53bba2cb76acfd3
+[运行时间：0.987826s] [吞吐率：1.01req/s] [内存消耗：4,747.33kb] [文件加载：75]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'coupon',
+    2 => 'lists',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => 'ff0657fd165d4455d53bba2cb76acfd3',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000195s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Coupon->lists[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Coupon.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000189s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000199s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.000196s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.000207s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:58:11+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/user.coupon/receive
+[运行时间：0.578368s] [吞吐率：1.73req/s] [内存消耗：4,523.73kb] [文件加载：71]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user.coupon',
+    2 => 'receive',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '115',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'coupon_id' => '36',
+  'wxapp_id' => '10001',
+  'token' => 'ff0657fd165d4455d53bba2cb76acfd3',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000189s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.001299s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.001311s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000193s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000207s ]
+[ info ] [ RUN ] app\api\controller\user\Coupon->receive[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\user\Coupon.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:59:15+08:00 ] 127.0.0.1 POST www.shop215.cc/index.php?s=/api/user.coupon/receive
+[运行时间：0.867413s] [吞吐率：1.15req/s] [内存消耗：4,711.16kb] [文件加载：75]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user.coupon',
+    2 => 'receive',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'origin' => 'http://127.0.0.1:29084',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'content-length' => '115',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'coupon_id' => '36',
+  'wxapp_id' => '10001',
+  'token' => 'ff0657fd165d4455d53bba2cb76acfd3',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000186s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.001314s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.001326s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000205s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000219s ]
+[ info ] [ RUN ] app\api\controller\user\Coupon->receive[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\user\Coupon.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2020-07-15T16:59:16+08:00 ] 127.0.0.1 GET www.shop215.cc/index.php?s=/api/coupon/lists&wxapp_id=10001&cityId=1047&cityName=%E5%90%88%E8%82%A5%E5%B8%82&token=ff0657fd165d4455d53bba2cb76acfd3
+[运行时间：0.829201s] [吞吐率：1.21req/s] [内存消耗：4,747.02kb] [文件加载：75]
+[ info ] [ LANG ] E:\phpstudy_pro\WWW\shop215555\shop215\source\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'coupon',
+    2 => 'lists',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://servicewechat.com/wxef676111fd092658/devtools/page-frame.html',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.3 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1 wechatdevtools/1.03.2005140 MicroMessenger/7.0.4 Language/zh_CN webview/',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'www.shop215.cc',
+)
+[ info ] [ PARAM ] array (
+  'wxapp_id' => '10001',
+  'cityId' => '1047',
+  'cityName' => '合肥市',
+  'token' => 'ff0657fd165d4455d53bba2cb76acfd3',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\App @app_begin [ RunTime:0.000191s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\api\controller\Coupon->lists[ E:\phpstudy_pro\WWW\shop215555\shop215\source\application\api\controller\Coupon.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000193s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\user\Grade @user_grade [ RunTime:0.000204s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.000198s ]
+[ info ] [ BEHAVIOR ] Run app\task\behavior\UserCoupon @UserCoupon [ RunTime:0.000210s ]
+[ info ] [ LOG ] INIT File

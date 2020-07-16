@@ -272,7 +272,61 @@ class Order extends OrderModel
      */
     private function updateToDelivery($orderList)
     {
+        $o_g_model = \think\Db::name("order_goods");
+        $e_model = \think\Db::name("express");
+        $attr = [];
         $data = [];
+        foreach ($orderList as $item) 
+        {
+            if(true == citrixCheckPartialShip(0,$item['order_id']))
+            {
+                $attr = [
+                    'order_id' => $item['order_id'],
+                    'express_no' => $item['express_no'],
+                    'express_id' => $item['express_id'],
+                    'express_company'=>$e_model->where(['express_id'=>$item['express_id']])->value("express_name"),
+                    'delivery_status' => 30,
+                    'delivery_time' => time(),
+                ]; 
+                if($list = citrixGetShipPrice(0,$item['order_id']))
+                {
+                    foreach ($list as $k1 => $v1) 
+                    {
+                        $o_g_model->where(['order_goods_id'=>$list[$k1]['order_goods_id']])->update($attr);
+                    }
+                }
+                $data[] = [
+                    'order_id' => $item['order_id'],
+                    'delivery_status' => 10,
+                ];
+            }else
+            {
+                $attr = [
+                    'order_id' => $item['order_id'],
+                    'express_no' => $item['express_no'],
+                    'express_id' => $item['express_id'],
+                    'express_company'=>$e_model->where(['express_id'=>$item['express_id']])->value("express_name"),
+                    'delivery_status' => 30,
+                    'delivery_time' => time(),
+                ]; 
+                if($list = citrixGetShipPrice(0,$item['order_id']))
+                {
+                    foreach ($list as $k1 => $v1) 
+                    {
+                        $o_g_model->where(['order_goods_id'=>$list[$k1]['order_goods_id']])->update($attr);
+                    }
+                }
+                $data[] = [
+                    'order_id' => $item['order_id'],
+                    'express_no' => $item['express_no'],
+                    'express_id' => $item['express_id'],
+                    'delivery_status' => 20,
+                    'delivery_time' => time(),
+                ];
+            }
+        }
+        return $this->isUpdate()->saveAll($data);
+        /*$data = [];
         foreach ($orderList as $item) {
             $data[] = [
                 'order_id' => $item['order_id'],
@@ -282,7 +336,7 @@ class Order extends OrderModel
                 'delivery_time' => time(),
             ];
         }
-        return $this->isUpdate()->saveAll($data);
+        return $this->isUpdate()->saveAll($data);*/
     }
 
     /**

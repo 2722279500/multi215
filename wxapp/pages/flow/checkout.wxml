@@ -86,6 +86,10 @@
   <!-- 商品列表 -->
   <view class="m-top20">
     <view class="checkout_list" wx:for="{{ goods_list }}" wx:key="this">
+      <view class="f-28 col-12 supplier">
+        <image mode="aspectFill" class="supplier-image" src="../../images/supplier.png"></image>
+        <view class="f-28 col-12 supplier-text">{{ item.supplier_name }}</view>
+      </view>
       <form bindsubmit="onTargetGoods" data-id="{{ item.goods_id }}" report-submit="true">
         <button formType="submit" class="btn-normal">
           <view class="flow-shopList dis-flex" data-index="{{ index }}">

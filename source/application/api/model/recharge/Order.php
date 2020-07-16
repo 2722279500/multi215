@@ -81,29 +81,6 @@ class Order extends OrderModel
     }
 
     /**
-     * 创建充值订单
-     * @param \app\api\model\User $user 当前用户信息
-     * @param double $customMoney 自定义充值金额
-     * @return bool|false|int
-     * @throws BaseException
-     * @throws \think\exception\DbException
-     */
-    public function createCardOrder($user, $customMoney = 0.00)
-    {
-        // 确定充值方式
-        $rechargeType = RechargeTypeEnum::CARD;
-        // 验证用户输入
-        if (!$this->validateForm($rechargeType, null, $customMoney)) {
-            $this->error = $this->error ?: '数据验证错误';
-            return false;
-        }
-        // 获取订单数据
-        $data = $this->getOrderData($user, $rechargeType, null, $customMoney);
-        // 记录订单信息
-        return $this->saveOrder($data);
-    }
-
-    /**
      * 保存订单记录
      * @param $data
      * @return bool|false|int
@@ -150,9 +127,6 @@ class Order extends OrderModel
         // 套餐充值
         if ($rechargeType == RechargeTypeEnum::PLAN) {
             $this->createDataByPlan($data, $planId);
-        }
-        if ($rechargeType == RechargeTypeEnum::CARD) {
-            $this->createDataByCard($data, $customMoney);
         }
         // 实际到账金额
         $data['order']['actual_money'] = bcadd($data['order']['pay_price'], $data['order']['gift_money'], 2);
@@ -205,21 +179,6 @@ class Order extends OrderModel
                 $order['order']['gift_money'] = $matchPlanInfo['gift_money'];
             }
         }
-        return true;
-    }
-
-    /**
-     * 创建储值卡订单数据
-     * @param $order
-     * @param $customMoney
-     * @return bool
-     */
-    private function createDataByCard(&$order, $customMoney)
-    {
-        // 用户支付金额
-        $order['order']['pay_price'] = $customMoney;
-        $order['order']['pay_status'] = 20;
-        $order['order']['pay_time'] = time();
         return true;
     }
 

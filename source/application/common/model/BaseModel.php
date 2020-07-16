@@ -25,7 +25,30 @@ class BaseModel extends Model
     {
         parent::init();
         // 获取当前域名
-        self::$base_url = base_url();
+        self::$base_url  = base_url();
+        
+        $yoshop_supplier = Session::get("yoshop_supplier.user");
+        $yoshop_store    = Session::get("yoshop_store.wxapp");
+
+        //平台
+        if(!empty($yoshop_store['wxapp_id']))
+        {
+            self::$wxapp_id = $yoshop_store['wxapp_id'];
+        }
+        //商户
+        elseif (!empty($yoshop_supplier['wxapp_id'])) 
+        {
+            self::$wxapp_id = $yoshop_supplier['wxapp_id'];
+        }
+        //小程序
+        else
+        {
+            //目测小程序是不需要wxapp_id的
+        }
+        
+
+
+        
         // 后期静态绑定wxapp_id
         self::bindWxappId();
     }
@@ -64,7 +87,7 @@ class BaseModel extends Model
     protected static function setStoreWxappId()
     {
         $session = Session::get('yoshop_store');
-        self::$wxapp_id = $session['wxapp']['wxapp_id'];
+        !empty($session) && self::$wxapp_id = $session['wxapp']['wxapp_id'];
     }
 
     /**

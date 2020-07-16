@@ -6,6 +6,7 @@ use app\api\controller\Controller;
 
 use app\api\model\Order as OrderModel;
 use app\api\model\Setting as SettingModel;
+use app\api\model\SupplierLog as SupplierLogModel;
 use app\common\enum\OrderType as OrderTypeEnum;
 use app\common\enum\order\PayType as PayTypeEnum;
 use app\common\service\qrcode\Extract as ExtractQRcode;
@@ -57,6 +58,7 @@ class Order extends Controller
         $model = OrderModel::getUserOrderDetail($order_id, $this->user['user_id']);
         // 该订单是否允许申请售后
         $model['isAllowRefund'] = $model->isAllowRefund();
+        $model['citrixIsOpen'] = citrixCheckSupplier();
         return $this->renderSuccess([
             'order' => $model,  // 订单详情
             'setting' => [
@@ -80,10 +82,32 @@ class Order extends Controller
         if (!$order['express_no']) {
             return $this->renderError('没有物流信息');
         }
+
         // 获取物流信息
         /* @var \app\store\model\Express $model */
         $model = $order['express'];
+
+        if(citrixCheckSupplier())
+        {
+            if($order['order_source'] == 10)
+            {
+                $goods_id = \request()->get("goods_id");
+                if($info = \think\Db::name("order_goods")
+                        ->where(['order_id'=>$order_id,'goods_id'=>$goods_id])
+                        ->find())
+                {
+                    $express_code = \think\Db::name("express")
+                                    ->where(['express_name'=>$info['express_company']])
+                                    ->value("express_code");
+                    $model['express_name'] = $info['express_company'];
+                    $model['express_code'] = $express_code;
+                    $order['express_no'] = $info['express_no'];
+                }
+            } 
+        }
+
         $express = $model->dynamic($model['express_name'], $model['express_code'], $order['express_no']);
+
         if ($express === false) {
             return $this->renderError($model->getError());
         }
@@ -118,6 +142,11 @@ class Order extends Controller
     {
         $model = OrderModel::getUserOrderDetail($order_id, $this->user['user_id']);
         if ($model->receipt()) {
+            if(citrixCheckSupplier())
+            {
+                $m = new SupplierLogModel($order_id);
+                $m->addBalanceLog();
+            }
             return $this->renderSuccess();
         }
         return $this->renderError($model->getError());

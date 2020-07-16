@@ -38,7 +38,6 @@ class UserCoupon extends BaseModel
     {
         return $this->belongsTo('User');
     }
-
     /**
      * 优惠券状态
      * @param $value

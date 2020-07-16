@@ -236,18 +236,6 @@ class Setting extends BaseModel
                         "4. 若有其它疑问，可拨打客服电话400-000-1234",     // 充值说明
                 ],
             ],
-            // 储值卡设置
-            'rechargecard' => [
-                'key' => 'rechargecard',
-                'describe' => '储值卡设置',
-                'values' => [
-                    'logo_image_id' => "10027",     // 储值卡模板
-                    'remark' => "以上条码及卡号为图例,请扫码你的会员卡号获取卡号",     // 储值卡备注
-                    'describe' => "1. 您可选择会员卡号,电话卡,证件号码其中的任意信息绑定已有会员卡\n" .
-                        "2. 请输入您的会员卡号或者扫码位于卡背面左下角的条形码获得卡号提交\n" .
-                        "3. 如您遗失或忘记您的会员卡号可尝试使用电话号码,身份证号码方式绑定",     // 储值卡说明
-                ],
-            ],
             // 积分设置
             SettingEnum::POINTS => [
                 'key' => SettingEnum::POINTS,

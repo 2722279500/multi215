@@ -1,7 +1,8 @@
 <?php
 
 namespace app\api\model;
-
+use \think\Request;
+use \think\Db;
 use app\common\model\Coupon as CouponModel;
 
 /**
@@ -34,6 +35,7 @@ class Coupon extends CouponModel
      */
     public function getList($user = false, $limit = null, $only_receive = false)
     {
+        $post = Request()->param();
         // 构造查询条件
         $this->where('is_delete', '=', 0);
         // 只显示可领取(未过期,未发完)的优惠券
@@ -41,10 +43,17 @@ class Coupon extends CouponModel
             $this->where('	IF ( `total_num` > - 1, `receive_num` < `total_num`, 1 = 1 )')
                 ->where('IF ( `expire_type` = 20, (`end_time` + 86400) >= ' . time() . ', 1 = 1 )');
         }
-
-        // 优惠券列表
-        $couponList = $this->order(['sort' => 'asc', 'create_time' => 'desc'])->limit($limit)->select();
-
+        if(citrixCheckSupplier() && !empty($post['cityId']))
+        {
+            $db_merchant = Db::name("merchant_active");
+            $merchant_list = $db_merchant->whereOr(['city_id'=>$post['cityId']])->group("active_id")->column("active_id");
+            // 优惠券列表
+            $couponList = $this->where('supplier_id',"in",$merchant_list)->whereOr(['supplier_id'=>0])->order(['sort' => 'asc', 'create_time' => 'desc'])->limit($limit)->select();
+        }else
+        {
+            // 优惠券列表
+            $couponList = $this->order(['sort' => 'asc', 'create_time' => 'desc'])->limit($limit)->select();
+        }
         // 获取用户已领取的优惠券
         if ($user !== false) {
             $UserCouponModel = new UserCoupon;

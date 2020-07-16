@@ -30,6 +30,16 @@ Page({
     _this.setListHeight();
     // 获取分类列表
     _this.getCategoryList();
+
+    //########################################################################citrix
+    // var supplier_city = wx.getStorageSync('supplier_city');
+    // var cityId = supplier_city.id;//城市id
+    // var cityName = supplier_city.name;//城市名称
+    // console.log('商品分类页category-----------------');
+    // console.log(cityId);
+    // console.log(cityName);
+    // console.log('商品分类页category-----------------');
+    //########################################################################
   },
 
   /**
@@ -83,16 +93,6 @@ Page({
       title: _this.data.templet.share_title,
       path: '/pages/category/index?' + App.getShareUrlParams()
     };
-  },
-
-  //分享朋友圈
-  onShareTimeline(){
-    let _this = this;
-    return {
-      title: _this.data.page.params.share_title,
-      path: '/pages/category/index?' + App.getShareUrlParams()
-    };
   }
-
 
 });

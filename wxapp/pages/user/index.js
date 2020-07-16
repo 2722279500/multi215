@@ -7,7 +7,6 @@ Page({
    */
   data: {
     isLogin: false,
-    items: {},
     userInfo: {}, // 用户信息
     orderCount: {}, // 订单数量
   },
@@ -16,32 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getPageData();
-  },
-  getPageData: function(callback) {
-    let _this = this;
-    App._get('page/member', {}, function(result) {
-      // 设置顶部导航栏栏
-      _this.setPageBar(result.data.page);
-      _this.setData(result.data);
-      // 回调函数
-      typeof callback === 'function' && callback();
-    });
-  },
 
-  /**
-   * 设置顶部导航栏
-   */
-  setPageBar: function(page) {
-    // 设置页面标题
-    wx.setNavigationBarTitle({
-      title: page.params.title
-    });
-    // 设置navbar标题、颜色
-    wx.setNavigationBarColor({
-      frontColor: page.style.titleTextColor === 'white' ? '#ffffff' : '#000000',
-      backgroundColor: page.style.titleBackgroundColor
-    })
   },
 
   /**
@@ -152,6 +126,9 @@ Page({
    * 跳转到登录页
    */
   onLogin() {
+    // wx.navigateTo({
+    //   url: '../login/login',
+    // });
     App.doLogin();
   },
 

@@ -349,12 +349,6 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
     .tpl-table-black-operation a.tpl-table-black-operation-del:hover {
       background: #e7505a;
       color: #fff; }
-  .tpl-table-black-operation a.tpl-table-black-operation-edit {
-    border: 1px solid #ff9800;
-    color: #ff9800; }
-  .tpl-table-black-operation a.tpl-table-black-operation-edit:hover {
-    background: #ff9800;
-    color: #fff; }
   .tpl-table-black-operation a.tpl-table-black-operation-green {
     border: 1px solid #5eb95e;
     color: #5eb95e; }

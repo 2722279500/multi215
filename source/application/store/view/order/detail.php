@@ -107,7 +107,7 @@ $detail = isset($detail) ? $detail : null;
                                         <?php endif; ?>
                                         <ul class="am-avg-sm-2">
                                             <li class="am-text-right">运费金额：</li>
-                                            <li class="am-text-right">+￥<?= $detail['express_price'] ?></li>
+                                            <li class="am-text-right">+￥<?= $detail['express_price'] ?><!-- <span style="font-weight: 700;color: #f60;">&nbsp;(￥<?= citrixGetSupplierExpressPrice($detail['order_id'],0) ?>)</span> --></li>
                                         </ul>
                                         <?php if ($detail['update_price']['value'] != '0.00') : ?>
                                             <ul class="am-avg-sm-2">
@@ -183,6 +183,7 @@ $detail = isset($detail) ? $detail : null;
                                 <th>单价</th>
                                 <th>购买数量</th>
                                 <th>商品总价</th>
+                                <th>操作</th>
                             </tr>
                             <?php foreach ($detail['goods'] as $goods): ?>
                                 <tr>
@@ -211,10 +212,25 @@ $detail = isset($detail) ? $detail : null;
                                     </td>
                                     <td>×<?= $goods['total_num'] ?></td>
                                     <td>￥<?= $goods['total_price'] ?></td>
+                                    <td>
+                                        <?php if ($goods['supplier_id'] == 0): ?>
+                                            <?php if ($goods['delivery_status'] == 30): ?>
+                                            <a type="button" class="am-btn am-btn-xs am-btn-primary citrixGetExpressInfo" data-company="<?= $goods['express_company'] ?>" data-no="<?= $goods['express_no'] ?>" data-time="<?= date('Y-m-d H:i:s', $goods['delivery_time']) ?>" href="#citrixGetExpressInfo">已发货</a>
+                                            <?php else: ?>
+                                            <a href="#delivery" class="am-btn am-btn-xs am-btn-success" onclick="citrixShip()">发货</a>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if ($goods['delivery_status'] == 30): ?>
+                                            <button type="button" class="am-btn am-btn-xs am-btn-primary" disabled="disabled">已发货</button>
+                                            <?php else: ?>
+                                            <button type="button" class="am-btn am-btn-xs am-btn-default" disabled="disabled">待发货</button>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                             <tr>
-                                <td colspan="6" class="am-text-right am-cf">
+                                <td colspan="7" class="am-text-right am-cf">
                                     <span class="am-fl">买家留言：<?= $detail['buyer_remark'] ?: '无' ?></span>
                                     <span class="am-fr">总计金额：￥<?= $detail['total_price'] ?></span>
                                 </td>
@@ -396,7 +412,7 @@ $detail = isset($detail) ? $detail : null;
                         <?php if ($detail['delivery_status']['value'] == 10): ?>
                             <?php if (checkPrivilege('order/delivery')): ?>
                                 <!-- 去发货 -->
-                                <form id="delivery" class="my-form am-form tpl-form-line-form" method="post"
+                                <form id="delivery" class="my-form am-form tpl-form-line-form citrixShip" method="post"
                                       action="<?= url('order/delivery', ['order_id' => $detail['order_id']]) ?>">
                                     <div class="am-form-group">
                                         <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">物流公司 </label>
@@ -442,17 +458,11 @@ $detail = isset($detail) ? $detail : null;
                                         <th>发货状态</th>
                                         <th>发货时间</th>
                                     </tr>
-                                    <tr>
-                                        <td><?= $detail['express']['express_name'] ?></td>
-                                        <td><?= $detail['express_no'] ?></td>
-                                        <td>
-                                             <span class="am-badge
-                                            <?= $detail['delivery_status']['value'] == 20 ? 'am-badge-success' : '' ?>">
-                                                    <?= $detail['delivery_status']['text'] ?></span>
-                                        </td>
-                                        <td>
-                                            <?= date('Y-m-d H:i:s', $detail['delivery_time']) ?>
-                                        </td>
+                                    <tr id="citrixGetExpressInfo" style="opacity: 0;">
+                                        <td id="data-company"></td>
+                                        <td id="data-no"></td>
+                                        <td><span class="am-badge am-badge-success">已发货</span></td>
+                                        <td id="data-time"></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -598,6 +608,7 @@ $detail = isset($detail) ? $detail : null;
                                 : $.show_error(result.msg);
                         }
                     });
+                    return true;
                 }
             });
         });
@@ -608,5 +619,21 @@ $detail = isset($detail) ? $detail : null;
          */
         $('.my-form').superForm();
 
+        $(document).on("click",".citrixGetExpressInfo",function()
+        {
+            var company = $(this).attr("data-company");
+            var no = $(this).attr("data-no");
+            var time = $(this).attr("data-time");
+
+            $("#citrixGetExpressInfo").css("opacity","100");
+            $("#data-company").html(company);
+            $("#data-no").html(no);
+            $("#data-time").html(time);
+        });
     });
+    //jquery提交发货
+    function citrixShip()
+    {
+        $(".citrixShip").submit();
+    }
 </script>

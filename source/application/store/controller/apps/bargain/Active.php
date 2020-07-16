@@ -25,6 +25,7 @@ class Active extends Controller
     {
         $model = new ActiveModel;
         $list = $model->getList($search);
+
         return $this->fetch('index', compact('list'));
     }
 

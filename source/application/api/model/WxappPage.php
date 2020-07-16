@@ -7,7 +7,6 @@ use app\api\model\store\Shop as ShopModel;
 use app\api\model\sharing\Goods as SharingGoodsModel;
 use app\api\model\bargain\Active as BargainActiveModel;
 use app\api\service\sharp\Active as SharpActiveService;
-use app\common\model\WxappNav;
 use app\common\model\WxappPage as WxappPageModel;
 use app\common\library\helper;
 
@@ -71,51 +70,6 @@ class WxappPage extends WxappPageModel
         }
         return ['page' => $items['page'], 'items' => $items];
     }
-
-
-
-    /**
-     * DIY会员页详情
-     * @param $user
-     * @param null $page_id
-     * @return array
-     * @throws \think\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
-     */
-    public static function getMemPageData($user, $page_id = null)
-    {
-        // 页面详情
-        $detail = $page_id > 0 ? parent::detail($page_id) : parent::getMemberPage();
-        // 页面diy元素
-        $items = $detail['page_data']['items'];
-        // 页面顶部导航
-        isset($detail['page_data']['page']) && $items['page'] = $detail['page_data']['page'];
-        return ['page' => $items['page'], 'items' => $items];
-    }
-
-
-    /**
-     * DIY导航
-     * @param $user
-     * @param null $page_id
-     * @return array
-     * @throws \think\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
-     */
-    public static function getNavData()
-    {
-        $model = new WxappNav();
-        $detail = $model::detail();
-        $detail = !empty($detail['nav_data']) ? json_decode($detail['nav_data'],true) : $model->getDefaultNav();
-        $items = $detail['items'][0];
-        return ['items' => $items];
-    }
-
-
 
     /**
      * 商品组件：获取商品列表

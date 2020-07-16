@@ -447,6 +447,7 @@
                                 </div>
                             </div>
 
+                            <?php if (citrixCheckisIndDealer()): ?>
                             <!-- 分销设置 -->
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">分销设置</div>
@@ -514,6 +515,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
 
                             <!-- 表单提交按钮 -->
                             <div class="am-form-group">

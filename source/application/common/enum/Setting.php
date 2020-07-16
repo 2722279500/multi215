@@ -39,9 +39,6 @@ class Setting extends EnumBasics
     // 订阅消息设置
     const SUBMSG = 'submsg';
 
-    // 储值卡设置
-    const RECHARGECARD = 'rechargecard';
-
     /**
      * 获取订单类型值
      * @return array
@@ -88,10 +85,6 @@ class Setting extends EnumBasics
             self::SUBMSG => [
                 'value' => self::SUBMSG,
                 'describe' => '小程序订阅消息',
-            ],
-            self::RECHARGECARD => [
-                'value' => self::RECHARGECARD,
-                'describe' => '储值卡设置',
             ],
         ];
     }

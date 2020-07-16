@@ -359,10 +359,6 @@
   color: inherit;
 }
 
-.diy-user .btn-normal {
-  text-align: center;
-}
-
 .btn-normal:after {
   border: none;
 }

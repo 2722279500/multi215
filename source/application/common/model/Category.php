@@ -2,7 +2,10 @@
 
 namespace app\common\model;
 
+use app\common\library\helper;
 use think\Cache;
+use think\Request;
+use think\Db;
 
 /**
  * 拼团商品分类模型
@@ -28,12 +31,41 @@ class Category extends BaseModel
      */
     public static function getALL()
     {
+        $supplier_id = empty(Request()->param("supplier_id"))?0:Request()->param("supplier_id");
+        $is_autarky = empty(Request()->param("is_autarky"))?0:Request()->param("is_autarky");
+        $city_id = empty(Request()->param("cityId"))?0:Request()->param("cityId");
+        $db_category = Db::name("category");
+        $db_merchant = Db::name("merchant_active");
         $model = new static;
-        if (!Cache::get('category_' . $model::$wxapp_id)) {
+        // if (!Cache::get('category_' . $model::$wxapp_id)) {
             $data = $model->with(['image'])->order(['sort' => 'asc', 'create_time' => 'asc'])->select();
             $all = !empty($data) ? $data->toArray() : [];
             $tree = [];
-            foreach ($all as $first) {
+            foreach ($all as $first) 
+            {
+                if(citrixCheckSupplier())
+                {
+                    if(!empty($city_id))
+                    {
+                        if(empty($is_autarky))
+                        {
+                            $merchant_list = $db_merchant->whereOr(['city_id'=>$city_id])->group("active_id")->column("active_id");
+                            $category_list = $db_category->where('supplier_id',"in",$merchant_list)->group("category_id")->column("category_id");
+                            if(!empty($first['supplier_id']) && !in_array($first['category_id'],$category_list))
+                            {
+                                continue;
+                            }
+                        }else
+                        {
+                            $merchant_list = $db_merchant->whereOr(['city_id'=>$city_id])->group("active_id")->column("active_id");
+                            $category_list = $db_category->where(['supplier_id'=>$supplier_id])->group("category_id")->column("category_id");
+                            if(!in_array($first['category_id'],$category_list))
+                            {
+                                continue;
+                            }
+                        }  
+                    }
+                }
                 if ($first['parent_id'] != 0) continue;
                 $twoTree = [];
                 foreach ($all as $two) {
@@ -51,9 +83,10 @@ class Category extends BaseModel
                 }
                 $tree[$first['category_id']] = $first;
             }
-            Cache::tag('cache')->set('category_' . $model::$wxapp_id, compact('all', 'tree'));
-        }
-        return Cache::get('category_' . $model::$wxapp_id);
+            return compact('all', 'tree');
+            // Cache::tag('cache')->set('category_' . $model::$wxapp_id, compact('all', 'tree'));
+        // }
+        // return Cache::get('category_' . $model::$wxapp_id);
     }
 
     /**
@@ -80,7 +113,7 @@ class Category extends BaseModel
      */
     public static function getCacheTreeJson()
     {
-        return json_encode(static::getCacheTree());
+        return helper::jsonEncode(static::getCacheTree());
     }
 
     /**

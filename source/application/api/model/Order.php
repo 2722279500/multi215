@@ -120,6 +120,7 @@ class Order extends OrderModel
         $goods['goods_sku'] = GoodsModel::getGoodsSku($goods, $goodsSkuId);
         // 商品列表
         $goodsList = [$goods->hidden(['category', 'content', 'image', 'sku'])];
+        $merchant_model = \think\Db::name("merchant_active");
         foreach ($goodsList as &$item) {
             // 商品单价
             $item['goods_price'] = $item['goods_sku']['goods_price'];
@@ -128,6 +129,9 @@ class Order extends OrderModel
             $item['spec_sku_id'] = $item['goods_sku']['spec_sku_id'];
             // 商品购买总金额
             $item['total_price'] = helper::bcmul($item['goods_price'], $goodsNum);
+            $supplier_name = $merchant_model->where(['active_id'=>$goods['supplier_id']])->value("name");
+            //多商家
+            $goods['supplier_name'] = $supplier_name?$supplier_name:'自营';
         }
         return $goodsList;
     }

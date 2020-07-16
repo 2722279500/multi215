@@ -266,15 +266,6 @@ return [
                         'name' => '领取记录',
                         'index' => 'market.coupon/receive'
                     ],
-                    [
-                        'name' => '手动发放',
-                        'index' => 'market.coupon/manual_add',
-                        'uris' => [
-                            'market.coupon/manual',
-                            'market.coupon/manual_add',
-                            'market.coupon/manual_edit',
-                        ]
-                    ],
                 ]
             ],
             [
@@ -326,28 +317,6 @@ return [
                 ]
             ],
             [
-                'name' => '储值卡',
-                'submenu' => [
-                    [
-                        'name' => '储值卡列表',
-                        'index' => 'market.rechargecard/index',
-                        'uris' => [
-                            'market.rechargecard/index',
-                            'market.rechargecard/add',
-                            'market.rechargecard/edit',
-                        ]
-                    ],
-                    [
-                        'name' => '领取记录',
-                        'index' => 'market.rechargecard/receive'
-                    ],
-                    [
-                        'name' => '充值设置',
-                        'index' => 'market.rechargecard/setting'
-                    ],
-                ]
-            ],
-            [
                 'name' => '满额包邮',
                 'index' => 'market.basic/full_free',
             ],
@@ -380,10 +349,6 @@ return [
                             'wxapp.page/add',
                             'wxapp.page/edit',
                         ]
-                    ],
-                    [
-                        'name' => '页面导航',
-                        'index' => 'wxapp.page/nav'
                     ],
                     [
                         'name' => '分类模板',
@@ -612,6 +577,56 @@ return [
                     ],
                 ]
             ],
+            [
+                'name' => '商户管理',
+                'index' => 'apps.merchant.active/index',
+                'submenu' => [
+                    [
+                        'name' => '商家设置',
+                        'index' => 'apps.merchant.setting/index',
+                    ],
+                    [
+                        'name' => '商家分类',
+                        'index' => 'apps.merchant.category/index',
+                        'uris' => [
+                            'apps.merchant.category/index',
+                            'apps.merchant.category/add',
+                            'apps.merchant.category/edit',
+                            'apps.merchant.category/delete',
+                        ],
+                    ],
+                    [
+                        'name' => '商家列表',
+                        'index' => 'apps.merchant.active/index',
+                        'uris' => [
+                            'apps.merchant.active/index',
+                            'apps.merchant.active/add',
+                            'apps.merchant.active/edit',
+                            'apps.merchant.active/delete',
+                        ],
+                    ],
+                    [
+                        'name' => '商家收支',
+                        'index' => 'apps.merchant.finance/index',
+                        'uris' => [
+                            'apps.merchant.finance/index',
+                            'apps.merchant.finance/add',
+                            'apps.merchant.finance/edit',
+                            'apps.merchant.finance/delete',
+                        ],
+                    ],
+                    [
+                        'name' => '商家提现',
+                        'index' => 'apps.merchant.withdraw/index',
+                        'uris' => [
+                            'apps.merchant.withdraw/index',
+                            'apps.merchant.withdraw/add',
+                            'apps.merchant.withdraw/edit',
+                            'apps.merchant.withdraw/delete',
+                        ],
+                    ]
+                ]
+            ]
         ]
     ],
     'setting' => [

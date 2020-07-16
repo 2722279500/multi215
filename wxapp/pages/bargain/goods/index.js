@@ -523,19 +523,5 @@ Page({
       path: `/pages/bargain/goods/index?${params}`
     };
   },
-  //分享朋友圈
-  onShareTimeline() {
-    let _this = this;
-    // 构建页面参数
-    let params = App.getShareUrlParams({
-      active_id: _this.data.active.active_id
-    });
-    return {
-      title: _this.data.detail.goods_name,
-      path: `/pages/bargain/goods/index?${params}`
-    };
-  }
-
-
 
 })

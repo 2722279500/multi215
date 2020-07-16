@@ -133,6 +133,7 @@ class OrderRefund extends OrderRefundModel
                 'is_agree' => 0,
                 'status' => 0,
                 'wxapp_id' => self::$wxapp_id,
+                'supplier_id' => $goods['supplier_id']
             ]);
             // 记录凭证图片关系
             if (isset($data['images']) && !empty($data['images'])) {

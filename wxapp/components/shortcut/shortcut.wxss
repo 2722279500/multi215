@@ -1,4 +1,4 @@
-/* @import "/utils/common.wxss"; */
+@import "/utils/common.wxss";
 
 /* 快捷导航 */
 
@@ -29,7 +29,7 @@
   opacity: 0;
 }
 
-.nav-item .iconfont {
+.nav-item text {
   font-size: 40rpx;
 }
 

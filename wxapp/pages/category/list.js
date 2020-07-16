@@ -30,6 +30,8 @@ Page({
     _this.setData({
       option
     });
+
+    // console.log(option.is_autarky);
     // 设置列表显示方式
     _this.setShowView();
     // 获取商品列表
@@ -54,6 +56,7 @@ Page({
   getGoodsList(isPage, page) {
     let _this = this;
     App._get('goods/lists', {
+      is_autarky:_this.data.option.is_autarky,
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,

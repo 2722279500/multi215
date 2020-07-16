@@ -31,6 +31,7 @@
                             <thead>
                             <tr>
                                 <th>分类ID</th>
+                                <th>所属商家</th>
                                 <th>分类名称</th>
                                 <th>分类排序</th>
                                 <th>添加时间</th>
@@ -41,6 +42,9 @@
                             <?php if (!empty($list)): foreach ($list as $first): ?>
                                 <tr>
                                     <td class="am-text-middle"><?= $first['category_id'] ?></td>
+                                    <td class="am-text-middle">
+                                        <p><?= citrixGetSupplierName($first['supplier_id']) ?></p>
+                                    </td>
                                     <td class="am-text-middle"><?= $first['name'] ?></td>
                                     <td class="am-text-middle"><?= $first['sort'] ?></td>
                                     <td class="am-text-middle"><?= $first['create_time'] ?></td>
@@ -64,6 +68,9 @@
                                 <?php if (isset($first['child'])): foreach ($first['child'] as $two): ?>
                                     <tr>
                                         <td class="am-text-middle"><?= $two['category_id'] ?></td>
+                                        <td class="am-text-middle">
+                                            <p><?= citrixGetSupplierName($two['supplier_id']) ?></p>
+                                        </td>
                                         <td class="am-text-middle">　-- <?= $two['name'] ?></td>
                                         <td class="am-text-middle"><?= $two['sort'] ?></td>
                                         <td class="am-text-middle"><?= $two['create_time'] ?></td>

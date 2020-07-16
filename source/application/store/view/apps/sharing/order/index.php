@@ -32,6 +32,9 @@ use app\common\enum\DeliveryType as DeliveryTypeEnum;
                                                     <i class="iconfont icon-daoru am-margin-right-xs"></i>批量发货
                                                 </a>
                                             <?php endif; ?>
+                                            <a class="j-export am-btn am-btn-danger am-radius" href="<?= url('store/order/all_list') ?>">
+                                                订单列表
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

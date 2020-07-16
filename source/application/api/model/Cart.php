@@ -101,6 +101,7 @@ class Cart
         // 获取并格式化商品数据
         $sourceData = (new GoodsModel)->getListByIds($goodsIds);
         $sourceData = helper::arrayColumn2Key($sourceData, 'goods_id');
+        $merchant_model = \think\Db::name("merchant_active");
         // 格式化购物车数据列表
         foreach ($cartList as $key => $item) {
             // 判断商品不存在则自动删除
@@ -131,6 +132,9 @@ class Cart
             // 商品总价
             $goods['total_price'] = bcmul($goods['goods_price'], $item['goods_num'], 2);
             $goodsList[] = $goods->hidden(['category', 'content', 'image', 'sku']);
+            $supplier_name = $merchant_model->where(['active_id'=>$goods['supplier_id']])->value("name");
+            //多商家
+            $goods['supplier_name'] = $supplier_name?$supplier_name:'自营';
         }
         return $goodsList;
     }

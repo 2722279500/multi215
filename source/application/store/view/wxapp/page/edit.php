@@ -43,6 +43,10 @@
                                     <p class="item-icon"><i class="iconfont icon-wxbsousuotuiguang"></i></p>
                                     <p>搜索框</p>
                                 </nav>
+                                <nav class="special" @click="onAddItem('citySearch')">
+                                    <p class="item-icon"><i class="iconfont icon-wxbsousuotuiguang"></i></p>
+                                    <p>城市搜索框</p>
+                                </nav>
                                 <nav class="special" @click="onAddItem('notice')">
                                     <p class="item-icon"><i class="iconfont icon-gonggao"></i></p>
                                     <p>公告组</p>
@@ -76,19 +80,6 @@
                                     <p>线下门店</p>
                                 </nav>
                             </div>
-
-                            <div class="title">会员中心</div>
-                            <div class="navs-components am-cf">
-                                <nav class="special" @click="onAddItem('user')">
-                                    <p class="item-icon"><i class="iconfont icon-user"></i></p>
-                                    <p>会员信息</p>
-                                </nav>
-                                <nav class="special" @click="onAddItem('wallet')">
-                                    <p class="item-icon"><i class="iconfont icon-qiandai"></i></p>
-                                    <p>我的钱包</p>
-                                </nav>
-                            </div>
-
                             <div class="title">工具组件</div>
                             <div class="navs-components am-cf">
                                 <nav class="special" @click="onAddItem('service')">
@@ -115,12 +106,7 @@
                                     <p class="item-icon"><i class="iconfont icon-daohangpinlei"></i></p>
                                     <p>单列导航</p>
                                 </nav>
-                                <nav class="special" @click="onAddItem('list')">
-                                    <p class="item-icon"><i class="iconfont icon-menufold"></i></p>
-                                    <p>列表导航</p>
-                                </nav>
                             </div>
-
                         </div>
                     </div>
                     <div class="action">
@@ -325,6 +311,30 @@
                                     <div @click.stop="onEditer(index)">
                                         <div class="drag optional" :class="{selected:index === selectedIndex}">
                                             <div class="diy-search">
+                                                <div class="inner"
+                                                     :class="item.style.searchStyle">
+                                                    <div class="search-input"
+                                                         :style="{textAlign: item.style.textAlign}">
+                                                        <i class="search-icon iconfont icon-ss-search"></i>
+                                                        <span>{{item.params.placeholder}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-edit-del">
+                                                <div class="btn-del" @click.stop="onDeleleItem(index)">删除</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <!-- diy元素: 城市搜索栏 -->
+                                <template v-else-if="item.type == 'citySearch'">
+                                    <div @click.stop="onEditer(index)">
+                                        <div class="drag optional" :class="{selected:index === selectedIndex}">
+                                            <div class="diy-search">
+                                                <div class="gocity">
+                                                    选择城市 <text class="iconfont icon-xiajiantous"></text>
+                                                </div>
                                                 <div class="inner"
                                                      :class="item.style.searchStyle">
                                                     <div class="search-input"
@@ -733,7 +743,7 @@
                                     </div>
                                 </template>
 
-                                <!-- diy元素: 单列导航 -->
+                                <!-- diy元素: navigate -->
                                 <template v-else-if="item.type == 'navigate'">
                                     <div @click.stop="onEditer(index)"
                                          class="drag optional" :class="{selected: index === selectedIndex}">
@@ -804,90 +814,6 @@
                                             <div class="btn-edit-del">
                                                 <div class="btn-del" @click.stop="onDeleleItem(index)">删除</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </template>
-
-                                <!-- diy元素: 列表导航 -->
-                                <template v-else-if="item.type == 'list'">
-                                    <div @click.stop="onEditer(index)"
-                                         class="drag optional" :class="{selected: index === selectedIndex}">
-                                        <div class="diy-guide"
-                                             :style="{background: item.style.background, padding: item.style.marginTop + 'px ' + item.style.marginLeft + 'px' }">
-                                            <div class="diy-list" v-for="(list,index) in item.data">
-                                                <div class="diy-list-text"><img :src="list.imgUrl" width="26px" alt=""><span style="margin-left:4px;" :style="{color:list.color}">{{ list.text }}</span></div><i class='iconfont icon-xiangyoujiantou'></i>
-                                            </div>
-                                        </div>
-                                        <div class="btn-edit-del">
-                                            <div class="btn-del" @click.stop="onDeleleItem(index)">删除</div>
-                                        </div>
-                                    </div>
-                                </template>
-
-                                <!-- diy元素: 会员信息 -->
-                                <template v-else-if="item.type == 'user'">
-                                    <div @click.stop="onEditer(index)"
-                                         class="drag optional" :class="{selected: index === selectedIndex}">
-                                        <div class="diy-guide">
-                                            <div class="diy-user-panel" :style="{'background-color':item.style.background,'background-image':'url(' + item.style.bgimage + ')'}" >
-                                                <div class="diy-user-head ">
-                                                    <div class="diy-user-img"><img :src="item.style.image" alt=""></div>
-                                                    <div class="diy-user-name">
-                                                        <p>用户昵称</p>
-                                                        <p class="diy-user-level"><i class="iconfont icon-grade-o"></i>用户等级</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="diy-user-info">
-                                                <div class="diy-navigate">
-                                                    <div class="diy-navigate-text">
-                                                        <span>{{ item.params.name }}</span>
-                                                    </div>
-                                                    <span style="font-size: 10px;color: #858484;">{{ item.params.text }}<i class='iconfont icon-xiangyoujiantou'></i></span>
-                                                </div>
-                                                <div class="diy-navBar">
-                                                    <ul class=""
-                                                        :class="item.style.rowsNum === '4'?'am-avg-sm-4':(item.style.rowsNum ==='3'?'am-avg-sm-3':'am-avg-sm-5')">
-                                                        <li class="" v-for="(user,index) in item.data">
-                                                            <div class="item-image">
-                                                                <img :src="user.imgUrl">
-                                                            </div>
-                                                            <p class="item-text am-text-truncate"
-                                                               :style="{color:user.color}">
-                                                                {{user.text}}</p>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="btn-edit-del">
-                                            <div class="btn-del" @click.stop="onDeleleItem(index)">删除</div>
-                                        </div>
-                                    </div>
-                                </template>
-
-                                <!-- diy元素: 我的钱包 -->
-                                <template v-else-if="item.type == 'wallet'">
-                                    <div @click.stop="onEditer(index)"
-                                         class="drag optional" :class="{selected: index === selectedIndex}">
-                                        <div class="diy-guide"
-                                             :style="{background: item.style.background, padding: item.style.marginTop + 'px ' + item.style.marginLeft + 'px' }">
-                                            <div class="diy-navBar diy-wallet">
-                                                <ul class="am-avg-sm-4">
-                                                    <li class="diy-wallet-icon" v-for="(wallet,index) in item.data">
-                                                        <div class="item-image">
-                                                            <span v-if="wallet.data">{{wallet.data}}</span>
-                                                            <img v-else :src="wallet.imgUrl">
-                                                        </div>
-                                                        <p class="item-text am-text-truncate"
-                                                           :style="{color:wallet.color}">
-                                                            {{wallet.text}}</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="btn-edit-del">
-                                            <div class="btn-del" @click.stop="onDeleleItem(index)">删除</div>
                                         </div>
                                     </div>
                                 </template>
@@ -2224,8 +2150,8 @@
                                 </div>
                             </form>
                         </div>
-                        <!--编辑器：单列导航 -->
-                        <div id="tpl_editor_navigate" v-if="curItem.type == 'navigate'">
+
+                        <div id="tpl_editor_guide" v-if="curItem.type == 'navigate'">
                             <div class="editor-title"><span>{{ curItem.name }}</span></div>
                             <form class="am-form tpl-form-line-form">
                                 <div class="am-form-group">
@@ -2289,285 +2215,6 @@
                                 </div>
                             </form>
                         </div>
-                        <!--编辑器：列表导航-->
-                        <div id="tpl_editor_list" v-if="curItem.type == 'list'">
-                            <div class="editor-title"><span>{{ curItem.name }}</span></div>
-                            <form class="am-form tpl-form-line-form">
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">背景颜色 </label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input class="" type="color"
-                                               v-model="curItem.style.background">
-                                        <button type="button" class="btn-resetColor am-btn am-btn-xs"
-                                                @click.stop="onEditorResetColor(curItem.style, 'background', '#ffffff')">
-                                            重置
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">上下边距 </label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input class="tpl-form-input" type="range"
-                                               v-model="curItem.style.marginTop" min="0" max="50">
-                                        <div class="display-value">
-                                            <span class="value">{{ curItem.style.marginTop }}</span>px(像素)
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">左右边距 </label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input class="tpl-form-input" type="range" min="0" max="50"
-                                               v-model="curItem.style.marginLeft">
-                                        <div class="display-value">
-                                            <span class="value">{{curItem.style.marginLeft}}</span>px
-                                            (像素)
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-items">
-                                    <draggable :list="curItem.data"
-                                               :options="{ animation: 120, filter: 'input', preventOnFilter: false }">
-                                        <div class="form-item drag" v-for="(list, index) in curItem.data">
-                                            <i class="iconfont icon-shanchu item-delete"
-                                               @click="onEditorDeleleData(index, selectedIndex)"></i>
-                                            <div class="item-inner">
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">图标 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <div class="data-image">
-                                                            <img :src="list.imgUrl" alt=""
-                                                                 @click="onEditorSelectImage(list, 'imgUrl')">
-                                                        </div>
-                                                        <div class="help-block">
-                                                            <small>建议尺寸90x90</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">文字内容</label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="text" v-model="list.text">
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">文字颜色 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="color" v-model="list.color">
-                                                        <button type="button" class="btn-resetColor am-btn am-btn-xs"
-                                                                @click.stop="onEditorResetColor(list, 'color', '#666666')">
-                                                            重置
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">链接地址 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="text" v-model="list.linkUrl">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </draggable>
-                                </div>
-                                <div class="j-data-add form-item-add" @click="onEditorAddData">
-                                    <i class="fa fa-plus"></i> 添加一个
-                                </div>
-                            </form>
-                        </div>
-
-                        <!--编辑器：会员信息-->
-                        <div id="tpl_editor_user" v-if="curItem.type == 'user'">
-                            <div class="editor-title"><span>{{ curItem.name }}</span></div>
-                            <form class="am-form tpl-form-line-form">
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">背景颜色 </label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input class="" type="color"
-                                               v-model="curItem.style.background">
-                                        <button type="button" class="btn-resetColor am-btn am-btn-xs"
-                                                @click.stop="onEditorResetColor(curItem.style, 'background', '#ffffff')">
-                                            重置
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">背景图片</label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <div class="data-image" style="border: 1px solid #edebeb;">
-                                            <img :src="curItem.style.bgimage" alt=""
-                                                 @click="onEditorSelectImage(curItem.style, 'bgimage')">
-                                        </div>
-                                        <div class="help-block">
-                                            <small>建议尺寸640x270</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">左侧标题</label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input type="text" v-model="curItem.params.name">
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">右侧文字</label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input type="text" v-model="curItem.params.text">
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">链接地址</label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input type="text" v-model="curItem.params.linkUrl">
-                                    </div>
-                                </div>
-
-                                <div class="form-items">
-                                    <draggable :list="curItem.data"
-                                               :options="{ animation: 120, filter: 'input', preventOnFilter: false }">
-                                        <div class="form-item drag" v-for="(user, index) in curItem.data">
-                                            <i class="iconfont icon-shanchu item-delete"
-                                               @click="onEditorDeleleData(index, selectedIndex)"></i>
-                                            <div class="item-inner">
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">图标 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <div class="data-image">
-                                                            <img :src="user.imgUrl" alt=""
-                                                                 @click="onEditorSelectImage(user, 'imgUrl')">
-                                                        </div>
-                                                        <div class="help-block">
-                                                            <small>建议尺寸90x90</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">文字内容</label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="text" v-model="user.text">
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">文字颜色 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="color" v-model="user.color">
-                                                        <button type="button" class="btn-resetColor am-btn am-btn-xs"
-                                                                @click.stop="onEditorResetColor(user, 'color', '#666666')">
-                                                            重置
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">链接地址 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="text" v-model="user.linkUrl">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </draggable>
-                                </div>
-                                <div class="j-data-add form-item-add" @click="onEditorAddData">
-                                    <i class="fa fa-plus"></i> 添加一个
-                                </div>
-                            </form>
-                        </div>
-
-                        <!--编辑器：我的钱包-->
-                        <div id="tpl_editor_wallet" v-if="curItem.type == 'wallet'">
-                            <div class="editor-title"><span>{{ curItem.name }}</span></div>
-                            <form class="am-form tpl-form-line-form">
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">背景颜色 </label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input class="" type="color"
-                                               v-model="curItem.style.background">
-                                        <button type="button" class="btn-resetColor am-btn am-btn-xs"
-                                                @click.stop="onEditorResetColor(curItem.style, 'background', '#ffffff')">
-                                            重置
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">上下边距 </label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input class="tpl-form-input" type="range"
-                                               v-model="curItem.style.marginTop" min="0" max="50">
-                                        <div class="display-value">
-                                            <span class="value">{{ curItem.style.marginTop }}</span>px(像素)
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-4 am-form-label am-text-xs">左右边距 </label>
-                                    <div class="am-u-sm-8 am-u-end">
-                                        <input class="tpl-form-input" type="range" min="0" max="50"
-                                               v-model="curItem.style.marginLeft">
-                                        <div class="display-value">
-                                            <span class="value">{{curItem.style.marginLeft}}</span>px
-                                            (像素)
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-items">
-                                    <draggable :list="curItem.data"
-                                               :options="{ animation: 120, filter: 'input', preventOnFilter: false }">
-                                        <div class="form-item drag" v-for="(wallet, index) in curItem.data">
-<!--                                            <i class="iconfont icon-shanchu item-delete"-->
-<!--                                               @click="onEditorDeleleData(index, selectedIndex)"></i>-->
-                                            <div class="item-inner">
-                                                <div class="am-form-group" v-if="wallet.imgUrl">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">图标 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <div class="data-image">
-                                                            <img :src="wallet.imgUrl" alt=""
-                                                                 @click="onEditorSelectImage(wallet, 'imgUrl')">
-                                                        </div>
-                                                        <div class="help-block">
-                                                            <small>建议尺寸30x30</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">文字内容</label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="text" v-model="wallet.text">
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">文字颜色 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="color" v-model="wallet.color">
-                                                        <button type="button" class="btn-resetColor am-btn am-btn-xs"
-                                                                @click.stop="onEditorResetColor(wallet, 'color', '#666666')">
-                                                            重置
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label class="am-u-sm-3 am-form-label am-text-xs">链接地址 </label>
-                                                    <div class="am-u-sm-8 am-u-end">
-                                                        <input type="text" v-model="wallet.linkUrl">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </draggable>
-                                </div>
-                            </form>
-                        </div>
-
 
                         <!--编辑器: 富文本-->
                         <div id="tpl_editor_richText" v-if="curItem.type == 'richText'">

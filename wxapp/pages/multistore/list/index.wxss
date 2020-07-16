@@ -1,0 +1,49 @@
+@import "/pages/search/index.wxss";
+
+.store-item {
+	display: flex;
+	justify-content: space-between;
+	padding: 24rpx;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	margin-bottom: 20rpx; 
+}
+
+.store-item .item-info {
+	flex: 1;
+	display: flex;
+}
+
+.store-item .item-info image {
+	width: 168rpx;
+	height: 138rpx;
+	margin-right: 24rpx;
+	flex-shrink: 0;
+}
+
+.store-item .item-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	color: #999999;
+	font-size: 28rpx;
+}
+
+.store-item .item-text .title {
+	font-size: 32rpx;
+	color: #666666;
+}
+
+.store-item .item-btn{
+	flex-shrink: 0;
+	align-self: center;
+	margin-left: 24rpx;
+	width: 154rpx;
+	height: 58rpx;
+	line-height: 58rpx;
+	text-align: center;
+	font-size: 24rpx;
+	color: #999999;
+	border: 1rpx solid #CCCCCC;
+	border-radius: 38rpx; 
+}

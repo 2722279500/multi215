@@ -9,6 +9,25 @@
                     <div class="link-list">
                         <ul class="">
                             <li class="link-item">
+                                <div class="row page-name">商户列表</div>
+                                <div class="row am-cf">
+                                    <div class="am-fl">地址：</div>
+                                    <div class="am-fl">
+                                        <span class="x-color-green">pages/multistore/list/index</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="link-item">
+                                <div class="row page-name">城市列表</div>
+                                <div class="row am-cf">
+                                    <div class="am-fl">地址：</div>
+                                    <div class="am-fl">
+                                        <span class="x-color-green">/pages/multistore/city/index</span>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="link-item">
                                 <div class="row page-name">商城首页</div>
                                 <div class="row am-cf">
                                     <div class="am-fl">地址：</div>

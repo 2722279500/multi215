@@ -1,8 +1,13 @@
-<block wx:for="{{diyItems}}" wx:key="this" wx:for-item="item" wx:for-index="itemIndex">
+<block wx:for="{{diyItems}}" wx:for-item="item" wx:for-index="itemIndex" wx:key="this">
 
   <!-- 搜索框 -->
   <block wx:if="{{item.type === 'search'}}">
-    <diy-search itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" params="{{ item.params }}"></diy-search>
+    <diy-search itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" params="{{ item.params }}" city="{{ city }}"></diy-search>
+  </block>
+
+  <!-- 城市搜索框 -->
+  <block wx:if="{{item.type === 'citySearch'}}">
+    <diy-citySearch itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" params="{{ item.params }}" city="{{ city }}"></diy-citySearch>
   </block>
 
   <!-- banner轮播 -->
@@ -105,19 +110,4 @@
     <diy-officialAccount itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-officialAccount>
   </block>
 
-  <!-- 个人中心头部 -->
-  <block wx:if="{{ item.type === 'user' }}">
-    <diy-user itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}" params="{{ item.params }}" userInfo="{{ userInfo }}"></diy-user>
-  </block>
-
-  <!-- 我的钱包 -->
-  <block wx:if="{{ item.type === 'wallet' }}">
-    <diy-purse itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-purse>
-  </block>
-
-  <!-- 导航组 -->
-  <block wx:if="{{ item.type === 'list' }}">
-    <diy-menus-list itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-menus-list>
-  </block>
-  
 </block>

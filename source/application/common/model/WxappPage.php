@@ -50,6 +50,15 @@ class WxappPage extends BaseModel
                     'searchStyle' => 'square'
                 ]
             ],
+            'citySearch' => [
+                'name' => '城市搜索框',
+                'type' => 'citySearch',
+                'params' => ['placeholder' => '请输入关键字进行搜索'],
+                'style' => [
+                    'textAlign' => 'left',
+                    'searchStyle' => 'square'
+                ]
+            ],
             'banner' => [
                 'name' => '图片轮播',
                 'type' => 'banner',
@@ -147,7 +156,7 @@ class WxappPage extends BaseModel
                 ]
             ],
             'navigate' => [
-                'name' => '单列导航',
+                'name' => '跳转组件',
                 'type' => 'navigate',
                 'style' => [
                     'background' => '#ffffff',
@@ -163,132 +172,6 @@ class WxappPage extends BaseModel
                     'type' => '0'
                 ],
             ],
-
-            //列表导航
-            'list' => [
-                'name' => '列表导航',
-                'type' => 'list',
-                'style' => ['background' => '#ffffff', 'rowsNum' => '4','marginTop' => 0,'marginLeft' => 0],
-                'data' => [
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/list.png',
-                        'linkUrl' => '',
-                        'text' => '标题文字1',
-                        'color' => '#666666'
-                    ],
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/list.png',
-                        'linkUrl' => '',
-                        'text' => '标题文字2',
-                        'color' => '#666666'
-                    ],
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/list.png',
-                        'linkUrl' => '',
-                        'text' => '标题文字3',
-                        'color' => '#666666'
-                    ],
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/list.png',
-                        'linkUrl' => '',
-                        'text' => '标题文字4',
-                        'color' => '#666666'
-                    ]
-                ]
-            ],
-
-
-            //会员信息
-            'user' => [
-                'name' => '会员信息',
-                'type' => 'user',
-                'style' => [
-                    'background' => '#f96d63',
-                    'rowsNum'=> '4',
-                    'marginTop' => 0,
-                    'bgimage' => self::$base_url . 'assets/store/img/diy/bgimage.png',
-                    'image' => self::$base_url . 'assets/store/img/diy/head_img.png'
-                ],
-                'params' => [
-                    'linkUrl' => 'pages/order/index?type=all',
-                    'name' => '我的订单',
-                    'text' => '全部订单',
-                ],
-                'data' => [
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/navbar/01.png',
-                        'imgName' => 'icon-1.png',
-                        'linkUrl' => 'pages/order/index?type=all',
-                        'text' => '全部订单',
-                        'color' => '#666666'
-                    ],
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/navbar/01.png',
-                        'imgName' => 'icon-2.jpg',
-                        'linkUrl' => 'pages/order/index?type=payment',
-                        'text' => '待付款',
-                        'color' => '#666666'
-                    ],
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/navbar/01.png',
-                        'imgName' => 'icon-3.jpg',
-                        'linkUrl' => 'pages/order/index?type=received',
-                        'text' => '待收货',
-                        'color' => '#666666'
-                    ],
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/navbar/01.png',
-                        'imgName' => 'icon-4.jpg',
-                        'linkUrl' => 'pages/order/refund/index',
-                        'text' => '退款/售后',
-                        'color' => '#666666'
-                    ]
-                ]
-            ],
-
-            //我的钱包
-            'wallet' => [
-                'name' => '我的钱包',
-                'type' => 'wallet',
-                'style' => [
-                    'background' => '#ffffff',
-                    'marginTop' => 0,
-                    'marginLeft' => 0,
-                ],
-
-                'data' => [
-
-                    [
-                        'linkUrl' => 'pages/user/wallet/index',
-                        'data' => '0.00',
-                        'text' => '账户余额',
-                        'color' => '#666666'
-                    ],
-
-                    [
-                        'linkUrl' => 'pages/points/log/index',
-                        'data' => '0',
-                        'text' => '可用积分',
-                        'color' => '#666666'
-                    ],
-
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/navbar/01.png',
-                        'imgName' => 'icon-1.png',
-                        'linkUrl' => 'pages/rechargecard/index',
-                        'text' => '充值卡',
-                        'color' => '#666666'
-                    ],
-                    [
-                        'imgUrl' => self::$base_url . 'assets/store/img/diy/navbar/01.png',
-                        'imgName' => 'icon-2.jpg',
-                        'linkUrl' => 'pages/user/wallet/index',
-                        'text' => '我的钱包',
-                        'color' => '#666666'
-                    ],
-                ]
-            ],
-
             'video' => [
                 'name' => '视频组',
                 'type' => 'video',
@@ -789,26 +672,14 @@ class WxappPage extends BaseModel
     }
 
     /**
-     * diy首页
+     * diy页面详情
      * @return static|null
      * @throws \think\exception\DbException
      */
     public static function getHomePage()
     {
-        return self::get(['page_type' => 10,'is_default'=>1]);
+        return self::get(['page_type' => 10]);
     }
-
-
-    /**
-     * diy会员页
-     * @return static|null
-     * @throws \think\exception\DbException
-     */
-    public static function getMemberPage()
-    {
-        return self::get(['page_type' => 30,'is_default'=>1]);
-    }
-
 
     /**
      * 旧版数据转义为新版格式

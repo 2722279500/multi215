@@ -28,12 +28,12 @@ class WxappPage extends WxappPageModel
      * @param $data
      * @return bool
      */
-    public function add($data,$type)
+    public function add($data)
     {
         // 删除wxapp缓存
         Wxapp::deleteCache();
         return $this->save([
-            'page_type' => $type,
+            'page_type' => 20,
             'page_name' => $data['page']['params']['name'],
             'page_data' => $data,
             'wxapp_id' => self::$wxapp_id
@@ -62,8 +62,8 @@ class WxappPage extends WxappPageModel
      */
     public function setDelete()
     {
-        if ($this['is_default'] == 1) {
-            $this->error = '默认页不可以删除';
+        if ($this['page_type'] == 10) {
+            $this->error = '默认首页不可以删除';
             return false;
         }
         // 删除wxapp缓存
@@ -75,22 +75,13 @@ class WxappPage extends WxappPageModel
      * 设为默认首页
      * @return int
      */
-    public function setHome($type)
+    public function setHome()
     {
-
-        if ($type == 20){
-            // 取消原默认首页
-            $this->where(['page_type' => 10])->update(['is_default' => 0]);
-            // 删除wxapp缓存
-            Wxapp::deleteCache();
-            return $this->save(['page_type' => 10,'is_default' => 1]);
-        }
-        // 取消原默认页
-        $this->where(['page_type' => $type])->update(['is_default' => 0]);
+        // 取消原默认首页
+        $this->where(['page_type' => 10])->update(['page_type' => 20]);
         // 删除wxapp缓存
         Wxapp::deleteCache();
-        return $this->save(['is_default' => 1]);
-
+        return $this->save(['page_type' => 10]);
     }
 
 }

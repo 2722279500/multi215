@@ -41,7 +41,7 @@
     <view class="row-textarea b-f m-top20">
       <view class="row-title">申请原因</view>
       <view class="content">
-        <input name="content" maxlength="2000" placeholder="请详细填写申请原因，注意保持商品的完好，建议您先与卖家沟通" placeholderStyle="color:#ccc"></input>
+        <textarea name="content" maxlength="2000" placeholder="请详细填写申请原因，注意保持商品的完好，建议您先与卖家沟通" placeholderStyle="color:#ccc"></textarea>
       </view>
     </view>
 

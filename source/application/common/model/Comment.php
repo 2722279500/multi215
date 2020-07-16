@@ -3,6 +3,7 @@
 namespace app\common\model;
 
 use think\Db;
+use think\Session;
 
 /**
  * 商品评价模型
@@ -102,6 +103,20 @@ class Comment extends BaseModel
      */
     public function getList()
     {
+        if(\Request()->module() == "supplier")
+        {
+            $user = Session::get("yoshop_supplier.user");
+            return $this->with(['user', 'orderM', 'OrderGoods'])
+                ->field("c.*")
+                ->alias('c')
+                ->where('c.is_delete', '=', 0)
+                ->order(['c.sort' => 'asc', 'c.create_time' => 'desc'])
+                ->join('goods g','g.goods_id = c.goods_id and g.supplier_id = '.$user['supplier_user_id'])
+                // ->fetchSql(true)
+                ->paginate(15, false, [
+                    'query' => request()->request()
+                ]);
+        }
         return $this->with(['user', 'orderM', 'OrderGoods'])
             ->where('is_delete', '=', 0)
             ->order(['sort' => 'asc', 'create_time' => 'desc'])

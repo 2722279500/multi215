@@ -77,7 +77,7 @@
 
 .dish-item {
   width: 100%;
-  padding: 26rpx 20rpx;
+  padding: 0rpx 20rpx 26rpx 20rpx;
   border-bottom: 1rpx solid #eee;
   position: relative;
   background: #fff;
@@ -195,4 +195,27 @@
   text-align: center;
   font-size: 28rpx;
   color: #444;
+}
+.supplier
+{
+  width: 100%;
+  position: unset;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left:102rpx;
+  background-color: #fff;
+}
+.supplier-image
+{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx 20rpx 20rpx 0rpx;
+  float: left;
+}
+.supplier-text
+{
+  height: 80rpx;
+  line-height: 80rpx;
+  float: left;
+  /*color: #ff495e;*/
 }

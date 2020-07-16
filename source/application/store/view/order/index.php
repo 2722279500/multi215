@@ -34,6 +34,9 @@ use app\common\enum\DeliveryType as DeliveryTypeEnum;
                                                     </a>
                                                 <?php endif; ?>
                                             <?php endif; ?>
+                                            <a class="j-export am-btn am-btn-danger am-radius" href="<?= url('apps.sharing.order/index') ?>">
+                                                拼团订单
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -102,6 +105,7 @@ use app\common\enum\DeliveryType as DeliveryTypeEnum;
                             <thead>
                             <tr>
                                 <th width="25%" class="goods-detail">商品信息</th>
+                                <th width="25%">所属商家</th>
                                 <th width="10%">单价/数量</th>
                                 <th width="15%">实付款</th>
                                 <th>买家</th>
@@ -112,7 +116,7 @@ use app\common\enum\DeliveryType as DeliveryTypeEnum;
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $colspan = 8; ?>
+                            <?php $colspan = 9; ?>
                             <?php if (!$list->isEmpty()): foreach ($list as $order): ?>
                                 <tr class="order-empty">
                                     <td colspan="<?= $colspan ?>"></td>
@@ -136,13 +140,16 @@ use app\common\enum\DeliveryType as DeliveryTypeEnum;
                                             </div>
                                         </td>
                                         <td class="am-text-middle">
+                                            <p><?= citrixGetSupplierName($goods['supplier_id']) ?></p>
+                                        </td>
+                                        <td class="am-text-middle">
                                             <p>￥<?= $goods['goods_price'] ?></p>
                                             <p>×<?= $goods['total_num'] ?></p>
                                         </td>
                                         <?php if ($i === 1) : $goodsCount = count($order['goods']); ?>
                                             <td class="am-text-middle" rowspan="<?= $goodsCount ?>">
                                                 <p>￥<?= $order['pay_price'] ?></p>
-                                                <p class="am-link-muted">(含运费：￥<?= $order['express_price'] ?>)</p>
+                                                <p class="am-link-muted">(含运费：￥<?= $order['express_price'] ?>)<!-- <span style="font-weight: 700;color: #f60;">&nbsp;(￥<?= citrixGetSupplierExpressPrice($order['order_id'],0) ?>)</span> --></p>
                                             </td>
                                             <td class="am-text-middle" rowspan="<?= $goodsCount ?>">
                                                 <p><?= $order['user']['nickName'] ?></p>
